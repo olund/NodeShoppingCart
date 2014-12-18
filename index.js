@@ -20,7 +20,15 @@ options = {
     }
 };
 
+
+
 app = module.exports = express();
+
+app.requestBeforeRoute = function requestBeforeRoute(server) {
+    // Run before any routes have been added
+    server.use(express.methodOverride());
+};
+
 app.use(kraken(options));
 app.on('start', function () {
     console.log('Application ready to serve requests.');

@@ -27,6 +27,15 @@
         {#products}
             <p>{.title}<p>
             <p>{.description}<p>
+            <form action="/admin/products/{.id}" method="POST">
+                <input type="hidden" name="_csrf" value="{_csrf}">
+                <input type="hidden" name="_method" value="DELETE">
+
+                <input type="submit" value="Delete"
+
+            </form>
+
+            <a href="/admin/products/{.id}">EDIT ME</a>
         {/products}
         </div>
     {/products}

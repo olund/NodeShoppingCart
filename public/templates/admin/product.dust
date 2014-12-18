@@ -1,0 +1,20 @@
+{>"layouts/master" /}
+
+{<title}
+    Edit Product
+{/title}
+
+{<body}
+    <form action="/admin/products/{product.id}" method="POST">
+        <input type="hidden" value="{_csrf}" name="_csrf">
+
+        <input type="text" name="title" value="{product.title}" placeholder="Enter the title">
+        <input type="text" name="description" value="{product.description}" placeholder="description">
+        <input type="text" name="price" value="{product.price}" placeholder="price">
+        <input type="text" name="category" value="{product.category}" placeholder="category">
+        <input type="text" name="teaserUrl" value="{product.teaserUrl}" placeholder="teaerUrl">
+
+
+
+    </form>
+{/body}
