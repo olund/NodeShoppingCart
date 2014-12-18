@@ -1,0 +1,36 @@
+{>"layouts/master" /}
+
+{<title}
+    {title}
+{/title}
+
+{<body}
+
+
+<div id="products-container">
+    <h2>Products!</h2>
+
+    <form method="POST" action="/admin/products">
+        <input type="hidden" value="{_csrf}" name="_csrf">
+
+        <input type="text" name="title" placeholder="Enter the title">
+        <input type="text" name="description" placeholder="description">
+        <input type="text" name="price" placeholder="price">
+        <input type="text" name="category" placeholder="category">
+        <input type="text" name="teaserUrl" placeholder="teaerUrl">
+
+        <input type="submit" value="submit">
+    </form>
+
+    {?products}
+        <div class="product-block">
+        {#products}
+            <p>{.title}<p>
+            <p>{.description}<p>
+        {/products}
+        </div>
+    {/products}
+</div>
+
+
+{/body}
