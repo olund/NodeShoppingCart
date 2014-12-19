@@ -1,0 +1,10 @@
+{>"layouts/master" /}
+
+{<title}
+Your Cart
+{/title}
+
+{<body}
+    <h1>Your cart!</h1>
+
+{/body}
