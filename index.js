@@ -19,17 +19,16 @@ options = {
         next(null, config);
     }
 };
+/*
+    Lägg till detta. debug modulen kan krävas..
+    npm install method-override --save
 
 
+ */
 
 app = module.exports = express();
-
-app.requestBeforeRoute = function requestBeforeRoute(server) {
-    // Run before any routes have been added
-    server.use(express.methodOverride());
-};
-
 app.use(kraken(options));
+
 app.on('start', function () {
     console.log('Application ready to serve requests.');
     console.log('Environment: %s', app.kraken.get('env:env'));

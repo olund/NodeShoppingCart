@@ -6,4 +6,14 @@ Vidoes
 
 {<body}
     <h1>{@pre type="content" key="greeting"/}</h1>
+
+    {?products}
+        <ul>
+        {#products}
+            <li><a href="/videos/{.id}">Title: {.title}</a></li>
+            <li>Desc: {.description}</li>
+            <li>Price: {.price}</li>
+        {/products}
+        </ul>
+    {/products}
 {/body}

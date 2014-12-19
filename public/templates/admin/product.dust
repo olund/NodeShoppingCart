@@ -13,8 +13,6 @@
         <input type="text" name="price" value="{product.price}" placeholder="price">
         <input type="text" name="category" value="{product.category}" placeholder="category">
         <input type="text" name="teaserUrl" value="{product.teaserUrl}" placeholder="teaerUrl">
-
-
-
+        <input type="submit" value="submit">
     </form>
 {/body}

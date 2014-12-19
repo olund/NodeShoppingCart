@@ -25,15 +25,19 @@
     {?products}
         <div class="product-block">
         {#products}
-            <p>{.title}<p>
-            <p>{.description}<p>
+            <ul>
+                <li>Title: {.title}</li>
+                <li>Desc: {.description}</li>
+                <li>Price: {.price}</li>
+                <li>Category: {.category}</li>
+                <li>teaserUrl: {.teaserUrl}</li>
+            </ul>
+
             <form action="/admin/products/{.id}" method="POST">
                 <input type="hidden" name="_csrf" value="{_csrf}">
                 <input type="hidden" name="_method" value="DELETE">
-
-                <input type="submit" value="Delete"
-
-            </form>
+                <input type="submit" value="Delete">
+            </form>£
 
             <a href="/admin/products/{.id}">EDIT ME</a>
         {/products}
