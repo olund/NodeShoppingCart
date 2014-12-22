@@ -44,7 +44,7 @@ module.exports = function (router) {
                         title: product.title,
                         price: product.price,
                         qty: 1
-                    }
+                    };
                 }
 
                 res.redirect('/cart');

@@ -1,3 +1,5 @@
+'use strict';
+
 var $data = require('jaydata');
 
 var product = function() {
@@ -11,8 +13,9 @@ var product = function() {
         category: { type: 'string' },
         teaserUrl: { type: 'string' }
     }, null);
-
+    /* jshint ignore:start */
     return Product;
+    /* jshint ignore:end */
 };
 
 module.exports = product();

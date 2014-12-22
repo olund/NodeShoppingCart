@@ -13,8 +13,9 @@ var user = function UserModel() {
         password: { type: 'string' },
         role: { type: 'string' }
     }, null);
-
+    /* jshint ignore:start */
     return User;
+    /* jshint ignore:end */
 };
 
 module.exports = user();

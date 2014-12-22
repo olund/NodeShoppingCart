@@ -1,6 +1,6 @@
 'use strict';
 var db = require('../lib/db'),
-    user = require('../models/user'),
+    User = require('../models/user'),
     passwordHash = require('password-hash');
 
 module.exports = function (router) {
@@ -20,7 +20,7 @@ module.exports = function (router) {
                 var user = new User();
                 user.username = req.body.username;
                 user.password = passwordHash.generate(req.body.password);
-                user.role = "user";
+                user.role = 'user';
 
                 db.Users.add(user);
                 db.saveChanges(function () {
