@@ -6,5 +6,17 @@ Your Cart
 
 {<body}
     <h1>Your cart!</h1>
+    {?cart.items}
+        <ul>
+        {#cart.items}
+            <li>Title: {.title}</li>
+            <li>Quantity: {.qty}</li>
+            <li>Price: {@math key="{.price}" method="multiply" operand="{.qty}" /}</li>
+            <br>
+        {/cart.items}
+        </ul>
+    {/cart.items}
 
+    <h2 style="color:green">Total: {cart.total}</h2>
+    <a href="/checkout">Checkout</a>
 {/body}

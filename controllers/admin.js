@@ -2,7 +2,7 @@
 
 
 var db = require('../lib/db');
-
+var User = require('../models/user');
 //var AdminModel = require('../../models/admin');
 var Product = require('../models/product');
 
@@ -64,6 +64,56 @@ module.exports = function (router) {
             .then(function () {
                 res.redirect('/admin/products');
             });
+    });
+
+    router.get('/users', function (req, res) {
+        db
+            .Users
+            .toArray(function (users) {
+                res.render('admin/users', { users: users });
+            });
+    });
+
+    router.post('/users/', function (req, res) {
+        var user = new User();
+        user.username = req.body.username;
+        user.password = req.body.password;
+        user.role = req.body.role;
+
+        db.Users.add(user);
+        db.saveChanges(function () {
+            res.redirect('/admin/users');
+        });
+    });
+
+    router.delete('/users/:id', function (req, res) {
+        db
+            .Users
+            .filter('it.id == id', { id: req.params.id })
+            .removeAll()
+            .then(function() {
+                res.redirect('/admin/users');
+            });
+    });
+
+    router.get('/users/:id', function (req, res) {
+        db
+            .Users
+            .filter('it.id == id', { id: req.params.id })
+            .single(null, null, function (user) {
+                res.render('admin/user', { user: user });
+            });
+    });
+
+    router.put('/users/:id', function (req, res) {
+        var user = db.Users.attachOrGet({ id: req.params.id });
+        user.username = req.body.username;
+        user.password = req.body.password;
+        user.role   = req.body.role;
+
+        db.saveChanges().then(function() {
+            res.redirect('/admin/users');
+        });
     });
 
 };

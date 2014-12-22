@@ -1,0 +1,40 @@
+{>"layouts/master" /}
+
+{<title}
+admin
+{/title}
+
+{<body}
+    <h1>Add users</h1>
+    <form action="/admin/users" method="POST">
+        <input type="hidden" name="_csrf" value="{_csrf}">
+
+
+        <input type="email" name="username" placeholder="Enter your email" required>
+        <input type="password" name="password" placeholder="Enter your password" required>
+        <input type="text" name="role" placeholder="Enter the role">
+        <input type="submit" value="add">
+    </form>
+    {?users}
+        <h2>Users</h2>
+        <ul>
+        {#users}
+            <li>username: {.username}</li>
+            <li>password: {.password}</li>
+            <li>role: {.role}</li>
+            <li><form action="/admin/users/{.id}" method="POST">
+                <input type="hidden" name="_csrf" value="{_csrf}">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="DELETE">
+            </form></li>
+            <li><a href="/admin/users/{.id}">EDIT</a></li>
+
+            <br>
+        {/users}
+        </ul>
+        {:else}
+        <h2>No users added yet:/</h2>
+    {/users}
+
+
+{/body}
