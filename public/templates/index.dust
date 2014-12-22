@@ -5,13 +5,9 @@ Awesomeness
 {/title}
 
 {<body}
-    <h1>{@pre type="content" key="greeting"/}</h1>
-
     <ul>
         <li><a href="/videos">Videos</a></li>
         <li><a href="/admin/products">Admin products</a></li>
     </ul>
-
-
 
 {/body}

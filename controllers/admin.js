@@ -10,6 +10,10 @@ var auth = require('../lib/auth');
 module.exports = function (router) {
     router.all('/*', auth.authenticate('admin'));
 
+    router.get('/', function (req, res) {
+        res.render('admin/index');
+    });
+
     router.get('/products', function (req, res) {
         db.Products.toArray(function(products) {
             res.render('admin/products', {

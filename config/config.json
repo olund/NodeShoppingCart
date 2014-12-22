@@ -71,7 +71,7 @@
             }
         }
 
-        ,"fileNotFound": {
+        /*,"fileNotFound": {
             "enabled": true,
             "priority": 130,
             "module": {
@@ -87,7 +87,7 @@
                 "name": "kraken-js/middleware/500",
                 "arguments": [ "errors/500" ]
             }
-        }
+        }*/
 
 
     }

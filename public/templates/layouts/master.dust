@@ -9,7 +9,11 @@
     <link rel="stylesheet" href="/css/app.css" />
 </head>
 <body>
+
+{>"partials/navbar" /}
+
 <div id="wrapper" class="container">
+    {>"partials/flash" /}
     {+body /}
 </div>
 <script src="/components/jquery/dist/jquery.min.js"></script>
