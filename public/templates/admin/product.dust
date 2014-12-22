@@ -6,8 +6,8 @@
 
 {<body}
     <form action="/admin/products/{product.id}" method="POST">
-        <input type="hidden" value="{_csrf}" name="_csrf">
-
+        <input type="hidden" name="_csrf" value="{_csrf}">
+        <input type="hidden" name="_method" value="PUT">
         <input type="text" name="title" value="{product.title}" placeholder="Enter the title">
         <input type="text" name="description" value="{product.description}" placeholder="description">
         <input type="text" name="price" value="{product.price}" placeholder="price">

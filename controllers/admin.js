@@ -44,8 +44,7 @@ module.exports = function (router) {
             });
     });
 
-    router.post('/products/:id', function (req, res) {
-        console.log('POST products with id');
+    router.put('/products/:id', function (req, res) {
         var product = db.Products.attachOrGet({ id: req.params.id });
         product.title = req.body.title;
         product.description = req.body.description;
