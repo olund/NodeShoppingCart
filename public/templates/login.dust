@@ -1,0 +1,35 @@
+{>"layouts/master" /}
+
+{<title}
+LOGIN
+{/title}
+
+{<body}
+
+    {?messages}
+        {#messages}
+            {?error}
+                {#error}
+                    <h4>{.}</h4>
+                {/error}
+            {/error}
+
+            {?info}
+                {#info}
+                    <h4>{.}</h4>
+                {/info}
+            {/info}
+        {/messages}
+    {/messages}
+
+    <h1>Login</h1>
+    <form action="/login" method="POST">
+        <input type="hidden" name="_csrf" value="{_csrf}">
+        <input type="text" name="username" placeholder="Username" required>
+        <br>
+        <input type="password" name="password" placeholder="Password" required>
+        <br>
+        <input type="submit" value="Login">
+    </form>
+
+{/body}

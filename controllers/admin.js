@@ -3,10 +3,12 @@
 
 var db = require('../lib/db');
 var User = require('../models/user');
-//var AdminModel = require('../../models/admin');
 var Product = require('../models/product');
+var passwordHash = require('password-hash');
+var auth = require('../lib/auth');
 
 module.exports = function (router) {
+    router.all('/*', auth.authenticate('admin'));
 
     router.get('/products', function (req, res) {
         db.Products.toArray(function(products) {
@@ -77,7 +79,7 @@ module.exports = function (router) {
     router.post('/users/', function (req, res) {
         var user = new User();
         user.username = req.body.username;
-        user.password = req.body.password;
+        user.password = passwordHash.generate(req.body.password);
         user.role = req.body.role;
 
         db.Users.add(user);

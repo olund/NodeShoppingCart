@@ -1,0 +1,15 @@
+{?messages}
+    {#messages}
+        {?error}
+            {#error}
+                <h4>{.}</h4>
+            {/error}
+        {/error}
+
+        {?info}
+            {#info}
+                <h4>{.}</h4>
+            {/info}
+        {/info}
+    {/messages}
+{/messages}

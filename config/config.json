@@ -55,6 +55,13 @@
             }
         }
 
+        ,"connectFlash": {
+            "enabled": true,
+            "priority": 80,
+            "module": {
+                "name": "connect-flash"
+            }
+        }
 
         ,"expressView": {
             "priority": 100,
@@ -63,9 +70,6 @@
                 "name": "engine-munger/lib/expressView"
             }
         }
-
-
-
 
         ,"fileNotFound": {
             "enabled": true,
