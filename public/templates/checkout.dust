@@ -1,0 +1,9 @@
+{>"layouts/master" /}
+
+{<title}
+Checkout
+{/title}
+
+{<body}
+    Something here
+{/body}
