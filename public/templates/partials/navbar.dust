@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">NodeShoppingCart</a>
+            <a class="navbar-brand" href="/">NodeShoppingCart</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -18,6 +18,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/login">Login</a></li>
+                <li><a href="/admin">Admin</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

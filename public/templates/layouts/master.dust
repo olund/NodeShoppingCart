@@ -10,7 +10,12 @@
 </head>
 <body>
 
-{>"partials/navbar" /}
+{?admin}
+    {!} This works.. {/!}
+{:else}
+    {>"partials/navbar" /}
+{/admin}
+
 
 <div id="wrapper" class="container">
     {>"partials/flash" /}

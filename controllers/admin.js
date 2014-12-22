@@ -11,7 +11,7 @@ module.exports = function (router) {
     router.all('/*', auth.authenticate('admin'));
 
     router.get('/', function (req, res) {
-        res.render('admin/index');
+        res.render('admin/index', { admin: true });
     });
 
     router.get('/products', function (req, res) {
@@ -75,7 +75,8 @@ module.exports = function (router) {
         db
             .Users
             .toArray(function (users) {
-                res.render('admin/users', { users: users });
+                //res.render('admin/users', { users: users });
+                res.send(JSON.stringify(users));
             });
     });
 
