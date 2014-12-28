@@ -1,13 +1,44 @@
 {>"layouts/master" /}
 
 {<title}
-Awesomeness
+NodeShoppingCart
 {/title}
 
 {<body}
-    <ul>
-        <li><a href="/videos">Videos</a></li>
-        <li><a href="/admin/products">Admin products</a></li>
-    </ul>
+
+        {?products}
+            {#products}
+                {!}
+                {@math key=$idx method="mod" operand=3}
+                    {@eq value=0}
+                        <div class="row">
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail">
+                                    even
+                                </div>
+                            </div>
+                    {:else}
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                odd
+                            </div>
+                        </div>
+                    {/eq}
+                {/math}{/!}
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="http://placehold.it/300x300" alt="...">
+                        <div class="caption">
+                            <h3>{.title}</h3>
+                            <p>{.description}</p>
+                        </div>
+                    </div>
+                </div>
+
+            {/products}
+
+        {:else}
+            <h2>No Products:( </h2>
+        {/products}
 
 {/body}

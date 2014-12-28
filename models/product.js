@@ -9,7 +9,7 @@ var product = function() {
         title: { type: 'string' },
         date: { type: 'string' },
         description: { type: 'string' },
-        price: { type: 'int' },
+        price: { type: 'double' },
         category: { type: 'string' },
         teaserUrl: { type: 'string' }
     }, null);

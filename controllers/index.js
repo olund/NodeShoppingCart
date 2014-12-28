@@ -1,7 +1,7 @@
 'use strict';
 
-
-var IndexModel = require('../models/index');
+var db = require('../lib/db'),
+    IndexModel = require('../models/index');
 
 
 module.exports = function (router) {
@@ -10,7 +10,13 @@ module.exports = function (router) {
 
 
     router.get('/', function (req, res) {
-        res.render('index', model);
+
+        db
+            .Products
+            .toArray(function (products) {
+                console.log(products);
+                res.render('index', { products: products });
+            });
     });
 
 };
