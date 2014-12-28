@@ -1,22 +1,24 @@
 'use strict';
 
-var db = require('../lib/db'),
-    IndexModel = require('../models/index');
-
+var models = require('../models');
 
 module.exports = function (router) {
 
-    var model = new IndexModel();
-
-
     router.get('/', function (req, res) {
 
-        db
-            .Products
-            .toArray(function (products) {
-                console.log(products);
-                res.render('index', { products: products });
+        /*models.User.findAll().then(function(users) {
+            console.log(users);
+            res.render('index');
+        });*/
+
+        models.Category.findAll({
+            include: [ models.Product ]
+        }).then(function(categories) {
+            console.log(categories);
+            res.render('index', {
+                categories: categories
             });
+        });
     });
 
 };

@@ -1,18 +1,15 @@
 'use strict';
 
 module.exports = function(sequelize, DataTypes) {
-    var Product = sequelize.define('Product', {
+    var Category = sequelize.define('Category', {
         title: DataTypes.STRING,
-        description: DataTypes.STRING,
-        price: DataTypes.DECIMAL,
-
     }, {
         classMethods: {
             associate: function(models) {
-                Product.belongsTo(models.Category)
+                Category.hasMany(models.Product)
             }
         }
     });
 
-    return Product;
+    return Category;
 };

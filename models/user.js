@@ -1,21 +1,17 @@
 'use strict';
-var $data = require('jaydata');
 
-var user = function UserModel() {
-    $data.Class.define('User', $data.Entity, null, {
-        id: {
-            type: 'id',
-            key: true,
-            computed: true,
-            nullable: false
-        },
-        username: { type: 'string' },
-        password: { type: 'string' },
-        role: { type: 'string' }
-    }, null);
-    /* jshint ignore:start */
+module.exports = function(sequelize, DataTypes) {
+    var User = sequelize.define('User', {
+        username: DataTypes.STRING,
+        password: DataTypes.STRING,
+        role: DataTypes.STRING
+    }, {
+        /*classMethods: {
+            associate: function(models) {
+                User.hasMany(models.Task)
+            }
+        }*/
+    });
+
     return User;
-    /* jshint ignore:end */
 };
-
-module.exports = user();

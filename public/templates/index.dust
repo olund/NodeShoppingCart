@@ -6,6 +6,24 @@ NodeShoppingCart
 
 {<body}
 
+    {?categories}
+        <ul>
+        {#categories}
+            <li>{.title}</li>
+            <ul>
+            {#.Products}
+                <li>{.title}</li>
+                <li>{.description}</li>
+                <li>{.price}</li>
+
+                <br>
+            {/.Products}
+            </ul>
+
+        {/categories}
+        </ul>
+    {/categories}
+
         {?products}
             {#products}
                 {!}
