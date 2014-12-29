@@ -37,10 +37,10 @@ body {
 @media (min-width: 768px) {
     .sidebar {
         position: fixed;
-        top: 61px;
+        top: 0px;
         bottom: 0;
         left: 0;
-        z-index: 1000;
+        z-index: 1;
         display: block;
         padding: 20px;
         overflow-x: hidden;
@@ -52,9 +52,10 @@ body {
 
 /* Sidebar navigation */
 .nav-sidebar {
-  margin-right: -21px; /* 20px padding + 1px border */
-  margin-bottom: 20px;
-  margin-left: -20px;
+    margin-top: 45px;
+    margin-right: -21px; /* 20px padding + 1px border */
+    margin-bottom: 20px;
+    margin-left: -20px;
 }
 .nav-sidebar > li > a {
   padding-right: 20px;

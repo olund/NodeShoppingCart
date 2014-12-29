@@ -17,7 +17,7 @@
 {/admin}
 
 
-<div id="wrapper" class="container">
+<div id="wrapper" class="container-fluid">
     {>"partials/flash" /}
     {+body /}
 </div>
