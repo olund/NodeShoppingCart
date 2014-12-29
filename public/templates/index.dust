@@ -5,24 +5,20 @@ NodeShoppingCart
 {/title}
 
 {<body}
-
-    {?categories}
-        <ul>
+    {!}{?categories}
         {#categories}
-            <li>{.title}</li>
+            <h2>{.title}</h2>
             <ul>
             {#.Products}
-                <li>{.title}</li>
-                <li>{.description}</li>
-                <li>{.price}</li>
+                <li>Title: {.title}</li>
+                <li>Desc: {.description}</li>
+                <li>Price: {.price}</li>
 
-                <br>
+                <hr>
             {/.Products}
             </ul>
-
         {/categories}
-        </ul>
-    {/categories}
+    {/categories}{/!}
 
         {?products}
             {#products}

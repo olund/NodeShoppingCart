@@ -4,8 +4,9 @@ module.exports = function(sequelize, DataTypes) {
     var Product = sequelize.define('Product', {
         title: DataTypes.STRING,
         description: DataTypes.STRING,
-        price: DataTypes.DECIMAL,
-
+        price: DataTypes.DECIMAL(10,2),
+        image: DataTypes.STRING,
+        slug: DataTypes.STRING,
     }, {
         classMethods: {
             associate: function(models) {

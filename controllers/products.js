@@ -1,31 +1,52 @@
 'use strict';
 
-var db = require('../lib/db');
+var models = require('../models');
 
 module.exports = function (router) {
 
     router.get('/', function (req, res) {
-        res.send('OK');
-
-    });
-
-    router.get('/all', function (req, res) {
-        db.Products.toArray(function (products) {
-            res.render('videos/index', { products: products });
+        models.Category.findAll({
+            include: [ models.Product ]
+        }).then(function(categories) {
+            res.render('products/index', {
+                categories: categories
+            });
         });
     });
 
+
     router.get('/:category', function (req ,res) {
-        res.send(req.params.category);
+        models.Category.find({
+            where: {
+                slug: req.params.category
+            },
+            include: [ models.Product ]
+        }).then(function(categories) {
+            res.render('products/products', {
+                categories: categories
+            });
+        });
     });
 
-    router.get('/:id', function (req, res) {
+    router.get('/:categories/:title', function (req, res) {
+        models.Product.find({
+            where: {
+                slug: req.params.title
+            }
+        }).then(function (product) {
+            res.render('products/product', {
+                product: product
+            });
+        });
+    });
+
+    /*router.get('/:id', function (req, res) {
         db
             .Products
             .filter('it.id == id', { id: req.params.id} )
             .single(null, null, function (product) {
                 res.render('videos/product', { product: product });
             });
-    });
+    });*/
 
 };

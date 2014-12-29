@@ -1,0 +1,9 @@
+<div class="col-sm-3 col-md-2 sidebar">
+    <ul class="nav nav-sidebar">
+        {?categories}
+            {#categories}
+                <li class="text-capitalize"><a href="/products/{.slug}">{.title}</a></li>
+            {/categories}
+        {/categories}
+    </ul>
+</div>

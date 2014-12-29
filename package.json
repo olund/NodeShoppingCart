@@ -27,7 +27,8 @@
     "mysql": "^2.5.4",
     "password-hash": "^1.2.2",
     "sequelize": "^2.0.0-rc4",
-    "sequelize-cli": "^1.0.1"
+    "sequelize-cli": "^1.0.1",
+    "slug": "^0.8.0"
   },
   "devDependencies": {
     "commander": "^2.5.1",

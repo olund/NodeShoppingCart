@@ -1,64 +1,107 @@
 'use strict';
 
 
-var db = require('../lib/db');
-var User = require('../models/user');
-var Product = require('../models/product');
-var passwordHash = require('password-hash');
-var auth = require('../lib/auth');
+var db = require('../lib/db'),
+    User = require('../models/user'),
+    Product = require('../models/product'),
+    passwordHash = require('password-hash'),
+    auth = require('../lib/auth'),
+    models = require('../models'),
+    slug = require('slug');
+
 
 module.exports = function (router) {
-    router.all('/*', auth.authenticate('admin'));
+    //router.all('/*', auth.authenticate('admin'));
 
     router.get('/', function (req, res) {
         res.render('admin/index', { admin: true });
     });
 
+    /**
+     * GET /admin/products
+     * Get all the categories and products
+     */
     router.get('/products', function (req, res) {
-        db.Products.toArray(function(products) {
+        models.Category.findAll({
+            include: [models.Product]
+        }).then(function(category) {
             res.render('admin/products', {
                 title: 'Admin - Products',
-                products: products
+                categories: category,
+                messages: req.flash(),
             });
         });
     });
 
     router.post('/products', function (req, res) {
-        var product = new Product();
-        product.title = req.body.title;
-        product.description = req.body.description;
-        product.price = req.body.price;
-        product.date = new Date().toString();
-        product.category = req.body.category;
-        product.teaserUrl = req.body.teaserUrl;
-
-        db.Products.add(product);
-
-        db.saveChanges().then(function() {
-            res.redirect('/admin/products');
+        models.Product.create({
+            title: req.body.title,
+            description: req.body.description,
+            price: req.body.price,
+            slug: slug(req.body.title),
+            CategoryId: req.body.category
+        }).complete(function(err, product) {
+            if (!!err) {
+                req.flash('warning', 'Something went wrong...');
+                console.log('SOMETHING WENT WRONG', err);
+            } else {
+                req.flash('success', 'Product added!');
+                res.redirect('/admin/products');
+            }
         });
     });
 
+    /**
+     * GET /admin/products/:id,
+     * Get a product product.
+     */
     router.get('/products/:id', function (req, res) {
-        db
-            .Products
-            .filter('it.id == id', { id: req.params.id })
-            .single(null, null, function (product) {
-                res.render('admin/product', { product: product });
+        // Get categories
+        models.Category.findAll().then(function (categories) {
+            // Get products
+            models.Product.find({
+                where: {
+                    id: req.params.id
+                }
+            }).then(function (product) {
+                // Get the current category for displaying it easier.
+                var current = {
+                    id: categories[product.CategoryId-1].id,
+                    title: categories[product.CategoryId-1].title
+                };
+                res.render('admin/product', {
+                    messages: req.flash(),
+                    current: current,
+                    categories: categories,
+                    product: product
+                });
             });
+        });
     });
 
+    /**
+     * PUT /admin/products/:id
+     * Update a product
+     */
     router.put('/products/:id', function (req, res) {
-        var product = db.Products.attachOrGet({ id: req.params.id });
-        product.title = req.body.title;
-        product.description = req.body.description;
-        product.price = req.body.price;
-        product.category = req.body.category;
-        product.teaserUrl = req.body.teaserUrl;
-
-        db.saveChanges().then(function () {
-            res.redirect('/admin/products');
+        // Update a product
+        models.Product.update({
+            title: req.body.title,
+            description: req.body.description,
+            price: req.body.price,
+            image: req.body.image,
+            slug: slug(req.body.title),
+            CategoryId: req.body.category
+        }, {
+            where: {
+                id: req.params.id
+            }
+        }).then(function (c) {
+            //TODO: ERROR handling
+            req.flash('success', 'Product edited, affected rows: ' + c);
+            res.redirect('/admin/products/' + req.params.id);
         });
+
     });
 
     router.delete('/products/:id', function (req, res) {
