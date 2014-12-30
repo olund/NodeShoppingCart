@@ -5,6 +5,14 @@ NodeShoppingCart
 {/title}
 
 {<body}
+
+    <div class="full">
+        <h1>Frontpage</h1>
+
+
+
+    </div>
+
     {!}{?categories}
         {#categories}
             <h2>{.title}</h2>

@@ -165,4 +165,54 @@ module.exports = function (router) {
         });
     });
 
+
+    router.get('/categories', function (req, res) {
+        models.Category.findAll().then(function (categories) {
+            res.render('admin/categories', {
+                categories: categories
+            });
+        });
+    });
+
+    router.post('/categories', function (req, res) {
+        models.Category.create({
+            title: req.body.title,
+            slug: slug(req.body.title),
+        }).complete(function(err, product) {
+            if (!!err) {
+                req.flash('warning', 'Something went wrong...');
+                console.log(err);
+            } else {
+                req.flash('success', 'Category added!');
+                res.redirect('/admin/categories');
+            }
+        });
+    });
+
+    router.get('/categories/:id', function (req, res) {
+        models.Category.find({
+            where: {
+                id: req.params.id
+            }
+        }).then(function (category) {
+            res.render('admin/category', {
+                category: category
+            });
+        });
+    });
+
+    router.put('/categories/:id', function (req, res) {
+        models.Category.update({
+            title: req.body.title,
+            slug: slug(req.body.title)
+        }, {
+            where: {
+                id: req.params.id
+            }
+        }).then(function (rowsAffected) {
+            req.flash('success', 'Category edited, affected rows: ' + rowsAffected);
+            res.redirect('/admin/categories/' + req.params.id);
+        });
+    });
+
 };

@@ -1,0 +1,51 @@
+{>"layouts/master" /}
+
+{<title}
+    Categories
+{/title}
+
+{>"partials/sidebar" /}
+<div id="main" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="row">
+        <div class="page-header">
+            <h1>Categories!</h1>
+        </div>
+        <div class="col-lg-12">
+            <div class="well bs-component">
+                <form class="form-horizontal" action="/admin/categories/" method="POST">
+                    <fieldset>
+                        <legend>Add category</legend>
+                        <input type="hidden" name="_csrf" value="{_csrf}">
+                        <div class="form-group">
+                            <label for="title" class="col-lg-2 control-label">Title</label>
+                            <div class="col-lg-10">
+                                <input type="text" name="title" class="form-control" id="title" placeholder="Title">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <input type="submit" class="btn btn-primary" value="Submit">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    {?categories}
+        <ul>
+        {#categories}
+            <li><a href="/admin/categories/{.id}">{.title}</a></li>
+        {/categories}
+        </ul>
+    {:else}
+        <h1>No categories</h1>
+    {/categories}
+    </div>
+</div>
+
+{<body}
+
+{/body}
