@@ -53,11 +53,11 @@
                             <label for="category" class="col-lg-2 control-label">Category</label>
                             <div class="col-lg-10">
                                 <select class="form-control" name="category" id="category">
-                                    {?category}
-                                        {#category}
+                                    {?categories}
+                                        {#categories}
                                             <option name="category" value="{.id}">{.title}</option>
-                                        {/category}
-                                    {/category}
+                                        {/categories}
+                                    {/categories}
                                 </select>
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                 <td>Delete</td>
             </tr>
             {:else}
-                <h2>No products added yet:/</h2>
+                <h3>No products added yet:/</h3>
             {/.Products}
         </tbody>
         </table>

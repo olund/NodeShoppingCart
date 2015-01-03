@@ -56,6 +56,7 @@ module.exports = function (router) {
      * Get a product product.
      */
     router.get('/products/:id', function (req, res) {
+        console.log('KÖRDES');
         // Get categories
         models.Category.findAll().then(function (categories) {
             // Get products
@@ -64,11 +65,21 @@ module.exports = function (router) {
                     id: req.params.id
                 }
             }).then(function (product) {
+
                 // Get the current category for displaying it easier.
-                var current = {
-                    id: categories[product.CategoryId-1].id,
-                    title: categories[product.CategoryId-1].title
-                };
+                var found = false,
+                    current = {};
+
+                for (var i = 0; i < categories.length && !found; i++) {
+                    if (categories[i].id === product.CategoryId) {
+                        found = true;
+                        current = {
+                            id: categories[i].id,
+                            title: categories[i].title
+                        };
+                    }
+                }
+
                 res.render('admin/product', {
                     messages: req.flash(),
                     current: current,
@@ -171,7 +182,8 @@ module.exports = function (router) {
             order: 'id DESC'
         }).then(function (categories) {
             res.render('admin/categories', {
-                categories: categories
+                categories: categories,
+                messages: req.flash()
             });
         });
     });
