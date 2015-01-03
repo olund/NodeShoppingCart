@@ -35,11 +35,36 @@
     </div>
     <div class="row">
     {?categories}
-        <ul>
-        {#categories}
-            <li><a href="/admin/categories/{.id}">{.title}</a></li>
-        {/categories}
-        </ul>
+        <table class="table table-striped table-hover ">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+            {#categories}
+                <tr>
+                    <td>{.id}</td>
+                    <td>{.title}</td>
+                    <td><a class="btn btn-info" href="/admin/categories/{.id}">EDIT</a></td>
+                    <td>
+                        <form action="/admin/categories/{.id}" method="POST">
+                            <input type="hidden" name="_csrf" value="{_csrf}">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="submit" class="btn btn-danger" value="Delete">
+                        </form>
+                    </td>
+
+                </tr>
+            {/categories}
+            </tbody>
+        </table>
+
     {:else}
         <h1>No categories</h1>
     {/categories}

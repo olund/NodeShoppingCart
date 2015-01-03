@@ -167,7 +167,9 @@ module.exports = function (router) {
 
 
     router.get('/categories', function (req, res) {
-        models.Category.findAll().then(function (categories) {
+        models.Category.findAll({
+            order: 'id DESC'
+        }).then(function (categories) {
             res.render('admin/categories', {
                 categories: categories
             });
@@ -212,6 +214,17 @@ module.exports = function (router) {
         }).then(function (rowsAffected) {
             req.flash('success', 'Category edited, affected rows: ' + rowsAffected);
             res.redirect('/admin/categories/' + req.params.id);
+        });
+    });
+
+    router.delete('/categories/:id', function (req, res) {
+        models.Category.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function () {
+            req.flash('info', 'Deleted the category');
+            res.redirect('/admin/categories');
         });
     });
 
