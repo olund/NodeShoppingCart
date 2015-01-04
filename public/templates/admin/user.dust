@@ -9,7 +9,7 @@ Edit user
     <form action="/admin/users/{user.id}" method="POST">
         <input type="hidden" name="_csrf" value="{_csrf}">
         <input type="hidden" name="_method" value="PUT">
-        <input type="email" name="username" placeholder="Enter your email" value="{user.username}" required>
+        <input type="text" name="username" placeholder="Enter your email" value="{user.username}" required>
         <input type="password" name="password" placeholder="Enter your password" value="{user.password}" required>
         <input type="text" name="role" placeholder="Enter the role" value="{user.role}">
         <input type="submit" value="edit">

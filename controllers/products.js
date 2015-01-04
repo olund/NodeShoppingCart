@@ -39,14 +39,4 @@ module.exports = function (router) {
             });
         });
     });
-
-    /*router.get('/:id', function (req, res) {
-        db
-            .Products
-            .filter('it.id == id', { id: req.params.id} )
-            .single(null, null, function (product) {
-                res.render('videos/product', { product: product });
-            });
-    });*/
-
 };

@@ -9,6 +9,11 @@
 {?product}
     <h1>{product.title}</h1>
     <p>Price: {product.price}</p>
+
+    <form class="" action="/cart/{product.id}" method="POST">
+        <input type="hidden" name="_csrf" value="{_csrf}">
+        <input type="submit" class="btn" name="addToCart" value="Add to cart">
+    </form>
 {/product}
 
 {/body}

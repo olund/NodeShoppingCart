@@ -1,6 +1,7 @@
 'use strict';
 
 var db = require('../lib/db');
+var models = require('../models');
 
 module.exports = function (router) {
 
@@ -23,8 +24,6 @@ module.exports = function (router) {
         displayCart.total = total;
 
         // render the cart with a model
-
-
         res.render('cart/index', { cart: displayCart });
     });
 
@@ -33,21 +32,24 @@ module.exports = function (router) {
         req.session.cart = req.session.cart || {};
         var cart = req.session.cart;
 
-        db
-            .Products
-            .filter('it.id == id', { id: req.params.id })
-            .single(null, null, function (product) {
-                if (cart[req.params.id]) {
-                    cart[req.params.id].qty++;
-                } else {
-                    cart[req.params.id] = {
-                        title: product.title,
-                        price: product.price,
-                        qty: 1
-                    };
-                }
+        models.Product.find({
+            where: {
+                id: req.params.id
+            },
+            limit: 1,
+        }).then(function (product) {
+            if (cart[req.params.id]) {
+                cart[req.params.id].qty++;
+            } else {
+                cart[req.params.id] = {
+                    title: product.title,
+                    price: product.price,
+                    qty: 1
+                };
+            }
 
-                res.redirect('/cart');
-            });
+            res.redirect('/cart');
+        });
+
     });
 };

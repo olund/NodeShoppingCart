@@ -11,11 +11,15 @@ var db = require('../lib/db'),
 
 
 module.exports = function (router) {
-    //router.all('/*', auth.authenticate('admin'));
+    router.all('/*', auth.authenticate('admin'));
 
     router.get('/', function (req, res) {
         res.render('admin/index', { admin: true });
     });
+
+    /*
+        Products -----------------------
+     */
 
     /**
      * GET /admin/products
@@ -25,11 +29,17 @@ module.exports = function (router) {
         models.Category.findAll({
             include: [models.Product]
         }).then(function(category) {
-            res.render('admin/products', {
-                title: 'Admin - Products',
-                categories: category,
-                messages: req.flash(),
-            });
+
+            if (req.xhr) {
+                res.send(JSON.stringify(category));
+            } else {
+                res.render('admin/products', {
+                    title: 'Admin - Products',
+                    categories: category,
+                    messages: req.flash(),
+                });
+            }
+
         });
     });
 
@@ -125,24 +135,32 @@ module.exports = function (router) {
             });
     });
 
+    /*
+        USERS -----------------------
+     */
     router.get('/users', function (req, res) {
-        db
-            .Users
-            .toArray(function (users) {
-                //res.render('admin/users', { users: users });
+        models.User.findAll().then(function (users) {
+            if (req.xhr) {
                 res.send(JSON.stringify(users));
-            });
+            } else {
+                res.render('admin/users', { users: users });
+            }
+        });
     });
 
     router.post('/users/', function (req, res) {
-        var user = new User();
-        user.username = req.body.username;
-        user.password = passwordHash.generate(req.body.password);
-        user.role = req.body.role;
-
-        db.Users.add(user);
-        db.saveChanges(function () {
-            res.redirect('/admin/users');
+        models.User.create({
+            username: req.body.username,
+            password: passwordHash.generate(req.body.password),
+            role: req.body.role,
+        }).complete(function(err, product) {
+            if (!!err) {
+                req.flash('warning', 'Something went wrong...');
+                console.log(err);
+            } else {
+                req.flash('success', 'User added!');
+                res.redirect('/admin/users');
+            }
         });
     });
 
@@ -176,15 +194,21 @@ module.exports = function (router) {
         });
     });
 
-
+    /*
+        Categories -----------------------
+     */
     router.get('/categories', function (req, res) {
         models.Category.findAll({
             order: 'id DESC'
         }).then(function (categories) {
-            res.render('admin/categories', {
-                categories: categories,
-                messages: req.flash()
-            });
+            if (req.xhr) {
+                res.send(JSON.stringify(categories));
+            } else {
+               res.render('admin/categories', {
+                    categories: categories,
+                    messages: req.flash()
+                });
+            }
         });
     });
 

@@ -5,5 +5,8 @@ Checkout
 {/title}
 
 {<body}
+    {cart}
+    <h1>Total price: <small>{cart.total}</small> </h1>
+
     Something here
 {/body}

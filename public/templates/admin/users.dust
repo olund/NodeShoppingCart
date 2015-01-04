@@ -8,9 +8,7 @@ admin
     <h1>Add users</h1>
     <form action="/admin/users" method="POST">
         <input type="hidden" name="_csrf" value="{_csrf}">
-
-
-        <input type="email" name="username" placeholder="Enter your email" required>
+        <input type="text" name="username" placeholder="Enter your username" required>
         <input type="password" name="password" placeholder="Enter your password" required>
         <input type="text" name="role" placeholder="Enter the role">
         <input type="submit" value="add">

@@ -14,10 +14,9 @@
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
                 <li {@eq key=active value="products"}class="active"{:else} class="notactive" {/eq}><a href="/products">Products</a></li>
-                <li {@eq key=active value="videos"}class="active"{/eq}><a href="/videos">Videos</a></li>
-
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="/cart">CART</a></li>
                 <li><a href="/login">Login</a></li>
                 <li><a href="/admin">Admin</a></li>
             </ul>
