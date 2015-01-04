@@ -1,6 +1,5 @@
 'use strict';
-var db = require('../lib/db'),
-    User = require('../models/user'),
+var models = require('../models'),
     passwordHash = require('password-hash');
 
 module.exports = function (router) {

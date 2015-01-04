@@ -1,6 +1,5 @@
 'use strict';
 
-var db = require('../lib/db');
 var models = require('../models');
 
 module.exports = function (router) {

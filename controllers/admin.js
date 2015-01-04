@@ -1,14 +1,9 @@
 'use strict';
 
-
-var db = require('../lib/db'),
-    User = require('../models/user'),
-    Product = require('../models/product'),
-    passwordHash = require('password-hash'),
+var passwordHash = require('password-hash'),
     auth = require('../lib/auth'),
     models = require('../models'),
     slug = require('slug');
-
 
 module.exports = function (router) {
     router.all('/*', auth.authenticate('admin'));
