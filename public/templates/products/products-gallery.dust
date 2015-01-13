@@ -1,0 +1,32 @@
+{>"layouts/master" /}
+
+{<title}
+{categories.title}
+{/title}
+
+{<body}
+    {>"partials/sidebar" /}
+    <div id="main" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+        {?categories}
+            {#categories}
+
+            <div class="row">
+                <a href="{url}" class="btn btn-info pull-right">List</a>
+                <h1 class="text-capitalize">{.title}</h1>
+                {#.Products}
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="thumbnail">
+                            <a href="#"><img src="{.image}" class="thumbnail img-responsive"></a>
+                            <div class="caption">
+                                <h3 class="text-capitalize">{.title}</h3>
+                                <p>{.description}</p>
+                            </div>
+                        </div>
+                    </div>
+                {/.Products}
+            {/categories}
+            </div>
+        {/categories}
+    </div>
+{/body}

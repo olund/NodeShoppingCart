@@ -18,12 +18,7 @@ options = {
         next(null, config);
     }
 };
-/*
-    Lägg till detta. debug modulen kan krävas..
-    npm install method-override --save
 
-
- */
 
 app = module.exports = express();
 app.use(kraken(options));
