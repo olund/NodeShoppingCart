@@ -2,6 +2,9 @@
 
 $(document).ready(function() {
 
+    var url = $(location).attr('href').split("/");
+    console.log(url[url.length-1]);
+
     /**
      * Fix the sidebar ACTIVE-links
      */

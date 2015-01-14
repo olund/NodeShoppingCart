@@ -4,6 +4,15 @@ var models = require('../models');
 
 module.exports = function (router) {
 
+    router.all('/*', function (req, res, next) {
+        models.Category.findAll().then(function (categories) {
+            res.locals.cat = categories;
+            console.log('KÖRDE-----------------------------------------!');
+            next();
+        });
+    });
+
+
     router.get('/', function (req, res) {
 
         /*models.User.findAll().then(function(users) {

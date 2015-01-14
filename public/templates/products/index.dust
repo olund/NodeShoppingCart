@@ -7,23 +7,13 @@ Products
 {<body}
     {>"partials/sidebar" /}
     <div id="main" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        {?categories}
-            {#categories}
-                <h2>{.title}</h2>
-                <ul>
-                {#.Products}
-                    <li>Title: {.title}</li>
-                    <li>Desc: {.description}</li>
-                    <li>Price: {.price}</li>
-                    <hr>
-                {:else}
-                    <h3>No products added yet:/</h3>
-                {/.Products}
-                </ul>
-            {/categories}
-
-        {:else}
-            <h2>No categories added yet:/</h2>
-        {/categories}
+        {?products}
+            {#.products}
+                <div class="row">
+                    <h2>{.title}</h2>
+                    <img src="{.image}?dim=1000x200" alt="{.title}">
+                </div>
+            {/.products}
+        {/products}
     </div>
 {/body}

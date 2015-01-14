@@ -5,12 +5,12 @@ var models = require('../models');
 module.exports = function (router) {
 
     router.get('/', function (req, res) {
-        models.Category.findAll({
-            include: [ models.Product ],
+        models.Product.findAll({
+            order: 'updatedAt DESC',
             limit: 9,
-        }).then(function(categories) {
+        }).then(function(products) {
             res.render('products/index', {
-                categories: categories
+                products: products
             });
         });
     });
@@ -30,8 +30,6 @@ module.exports = function (router) {
                 url = '/products/' + req.params.category;
                 template = 'products/products';
             }
-
-            console.log('template!!!!', template);
 
             res.render(template, {
                 categories: categories,

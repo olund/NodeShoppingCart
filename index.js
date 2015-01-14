@@ -2,7 +2,7 @@
 
 var express = require('express');
 var kraken = require('kraken-js');
-
+var qt = require('quickthumb');
 var options, app;
 
 /*
@@ -23,6 +23,8 @@ options = {
 app = module.exports = express();
 app.use(kraken(options));
 
+/* TEST QUICKTHUMB */
+app.use(qt.static(__dirname + '/public'));
 
 app.on('start', function () {
     console.log('Application ready to serve requests.');

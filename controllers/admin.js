@@ -3,7 +3,8 @@
 var passwordHash = require('password-hash'),
     auth = require('../lib/auth'),
     models = require('../models'),
-    slug = require('slug');
+    slug = require('slug'),
+    fs = require('fs');
 
 module.exports = function (router) {
     router.all('/*', auth.authenticate('admin'));
@@ -24,7 +25,6 @@ module.exports = function (router) {
         models.Category.findAll({
             include: [models.Product]
         }).then(function(category) {
-
             if (req.xhr) {
                 res.send(JSON.stringify(category));
             } else {
@@ -39,20 +39,29 @@ module.exports = function (router) {
     });
 
     router.post('/products', function (req, res) {
-        models.Product.create({
-            title: req.body.title,
-            description: req.body.description,
-            price: req.body.price,
-            slug: slug(req.body.title),
-            CategoryId: req.body.category
-        }).complete(function(err, product) {
-            if (!!err) {
-                req.flash('warning', 'Something went wrong...');
-                console.log('SOMETHING WENT WRONG', err);
-            } else {
-                req.flash('success', 'Product added!');
-                res.redirect('/admin/products');
-            }
+        fs.readFile(req.files.file.path, function(err, data) {
+            var filepath = __dirname + '/../public/images/products/' + req.files.file.name;
+            fs.writeFile(filepath, data, function(err) {
+                if (!!err) {
+                    console.log(err);
+                }
+                models.Product.create({
+                    title: req.body.title,
+                    description: req.body.description,
+                    price: req.body.price,
+                    slug: slug(req.body.title),
+                    CategoryId: req.body.category,
+                    image: '/images/products/' + req.files.file.name,
+                }).complete(function(err, product) {
+                    if (!!err) {
+                        req.flash('warning', 'Something went wrong...');
+                        console.log('SOMETHING WENT WRONG', err);
+                    } else {
+                        req.flash('success', 'Product added!');
+                        res.redirect('/admin/products');
+                    }
+                });
+            });
         });
     });
 
