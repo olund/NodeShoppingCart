@@ -71,6 +71,14 @@
             }
         }
 
+        ,"loadThings" : {
+            "enabled": true,
+            "priority": 101,
+            "module": {
+                "name": "path:./lib/loadThings"
+            }
+        }
+
         /*,"fileNotFound": {
             "enabled": true,
             "priority": 130,

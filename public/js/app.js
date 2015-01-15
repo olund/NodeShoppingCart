@@ -106,35 +106,47 @@ $(document).ready(function() {
 
         bindEvents: function() {
             this.config.cart.on('click', this.loadCartItems);
+            $(document).on('click', this.slideUpCart);
         },
 
         loadCartItems: function(event) {
+            event.preventDefault();
             var self = cart;
+
+            // Reset list
+            self.config.list.empty();
+            self.config.total.empty();
 
             $.ajax({
                 url: '/cart/'
             }).done(function (cart) {
-                $(self.config.cartBox).slideDown('fast', function() {
-
-                    $.each(cart.items, function(index, element) {
-                        console.log(index, element);
-                        console.log(element.title);
-
-                        self.config.list.append('qweqwe');
-                    });
+                $(self.config.cartBox).slideDown(100, function() {
+                    if (cart.items.length === 0) {
+                        console.log('No items in cart..');
+                    } else {
+                        // Items in cart, loop and show it.
+                        $.each(cart.items, function(index, element) {
+                            self.config.list.append('<li class="text-capitalize"><span>' + element.title + '</span><span> ' + element.price + ' kr</span></li>');
+                        });
+                        console.log(cart);
+                        self.config.total.append('Total: ' + cart.total);
+                    }
                 });
-
             }).fail(function() {
                 console.log("error - loadCart");
             });
+        },
 
-
-
+        slideUpCart: function (event) {
+            var self = cart;
+            self.config.cartBox.slideUp(100);
         },
     };
 
     cart.init({
-        list: $('ul#cart-list'),
+        cartspan: $('.cartspan'),
+        addToCart: $('.addToCart'),
+        list: $('.cart-list'),
         cart: $('#cart'),
         total: $('#total'),
         cartBox: $('#cart-box'),

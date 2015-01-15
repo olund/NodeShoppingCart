@@ -23,7 +23,14 @@
                     <div id="cart" class="btn btn-primary" aria-label="Cart">
                         <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                         <span class="sr-only">Cart:</span>
-                        <span> Cart is empty</span>
+                        <span class="cartspan" id="cartspan">
+                            {?.cart}
+                                <span>{.cart.total} kr</span>
+                                <span class="nrOfItems badge">{.cart.nrOfItems}</span>
+                            {:else}
+                                 Empty cart
+                            {/cart}
+                        </span>
                     </div>
                 </li>
             </ul>

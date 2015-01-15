@@ -23,6 +23,7 @@ module.exports = function (router) {
             where: {
                 slug: req.params.category
             },
+            order: 'updatedAt DESC',
             include: [ models.Product ]
         }).then(function(categories) {
 

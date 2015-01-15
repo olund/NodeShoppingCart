@@ -12,7 +12,7 @@
 
     <form class="" action="/cart/{product.id}" method="POST">
         <input type="hidden" name="_csrf" value="{_csrf}">
-        <input type="submit" class="btn" name="addToCart" value="Add to cart">
+        <input id="addToCart" type="submit" class="btn btn-info" name="addToCart" value="Add to cart">
     </form>
 {/product}
 

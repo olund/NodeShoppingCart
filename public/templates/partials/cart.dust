@@ -1,8 +1,7 @@
-<aside id="cart-box" class="col-sm-4 col-md-2 pull-right">
-    All items:
-    <ul id="#cart-list"></ul>
-    <ul id="#cart-list2"></ul>
+<aside id="cart-box" class="col-sm-8 col-md-4 pull-right">
+    <ul class="cart-list" id="#cart-list"></ul>
+    <h3><span id="total" class="label label-info"></span></h3>
     <div class="btn-cart">
-        <a class="btn" href="/cart/">Goto Cart</a>
+        <a class="btn btn-primary" href="/cart/">Goto Cart</a>
     </div>
 </aside>

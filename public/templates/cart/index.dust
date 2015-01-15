@@ -5,18 +5,29 @@ Your Cart
 {/title}
 
 {<body}
-    <h1>Your cart!</h1>
-    {?cart.items}
-        <ul>
-        {#cart.items}
-            <li>Title: {.title}</li>
-            <li>Quantity: {.qty}</li>
-            <li>Price: {@math key="{.price}" method="multiply" operand="{.qty}" /}</li>
-            <br>
-        {/cart.items}
-        </ul>
-    {/cart.items}
 
-    <h2 style="color:green">Total: {cart.total}</h2>
-    <a href="/checkout">Checkout</a>
+    <div id="main" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        {>"partials/cart" /}
+
+        <h1>Your cart!</h1>
+        {?cart.items}
+            <ul>
+            {#cart.items}
+                <li>Title: {.title}</li>
+                <li>Quantity: {.qty}</li>
+                <li>Price: {@math key="{.price}" method="multiply" operand="{.qty}" /}</li>
+                <br>
+            {/cart.items}
+            </ul>
+        {/cart.items}
+
+        <h2 style="color:green">Total: {cart.total}</h2>
+        <form action="/cart/all" method="POST">
+            <input type="hidden" name="_csrf" value="{_csrf}">
+            <input type="hidden" name="_method" value="DELETE">
+
+            <input type="submit" name="deleteAllFromCart" class="btn btn-warning" value="Clear cart">
+        </form>
+        <a class="btn btn-primary" href="/checkout">Checkout</a>
+    </div>
 {/body}
