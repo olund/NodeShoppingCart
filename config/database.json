@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "root",
+    "database": "nodeshoppingcart",
+    "host": "10.0.0.189",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "",
+    "database": "node-portfolio",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "",
+    "database": "node-portfolio",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

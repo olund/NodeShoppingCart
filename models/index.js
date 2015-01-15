@@ -7,7 +7,8 @@ var env       = process.env.NODE_ENV || "development";
 //var config    = require(__dirname + '/../config/config.json')[env];
 var sequelize = new Sequelize('nodeshoppingcart', 'root', 'root', {
     dialect: "mysql",
-    port:    8889, //3306
+    host: '10.0.0.189',
+    port:    8889
 });
 var db        = {};
 

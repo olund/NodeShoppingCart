@@ -1,0 +1,8 @@
+<aside id="cart-box" class="col-sm-4 col-md-2 pull-right">
+    All items:
+    <ul id="#cart-list"></ul>
+    <ul id="#cart-list2"></ul>
+    <div class="btn-cart">
+        <a class="btn" href="/cart/">Goto Cart</a>
+    </div>
+</aside>

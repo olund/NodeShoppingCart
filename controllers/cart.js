@@ -22,8 +22,13 @@ module.exports = function (router) {
         // total the values
         displayCart.total = total;
 
-        // render the cart with a model
-        res.render('cart/index', { cart: displayCart });
+        if (req.xhr) {
+            // Send JSON
+            res.send(JSON.stringify(displayCart));
+        } else {
+            // render the cart with a model
+            res.render('cart/index', { cart: displayCart });
+        }
     });
 
 

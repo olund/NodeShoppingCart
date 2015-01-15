@@ -91,6 +91,55 @@ $(document).ready(function() {
         }
     };
 
+    var cart = {
+        init: function(config) {
+            this.config = config;
+
+            $.ajaxSetup({
+                url: '/cart/',
+                type: 'GET',
+                dataType: 'json',
+            });
+
+            this.bindEvents();
+        },
+
+        bindEvents: function() {
+            this.config.cart.on('click', this.loadCartItems);
+        },
+
+        loadCartItems: function(event) {
+            var self = cart;
+
+            $.ajax({
+                url: '/cart/'
+            }).done(function (cart) {
+                $(self.config.cartBox).slideDown('fast', function() {
+
+                    $.each(cart.items, function(index, element) {
+                        console.log(index, element);
+                        console.log(element.title);
+
+                        self.config.list.append('qweqwe');
+                    });
+                });
+
+            }).fail(function() {
+                console.log("error - loadCart");
+            });
+
+
+
+        },
+    };
+
+    cart.init({
+        list: $('ul#cart-list'),
+        cart: $('#cart'),
+        total: $('#total'),
+        cartBox: $('#cart-box'),
+    });
+
     admin.init({
         main: $('div#main'),
         usersLink: $('a#adminUsers'),

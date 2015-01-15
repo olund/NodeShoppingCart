@@ -16,10 +16,16 @@
                 <li {@eq key=active value="products"}class="active"{:else} class="notactive" {/eq}><a href="/products">Products</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/cart">CART</a></li>
                 <li><a href="/login">Login</a></li>
                 <li><a href="/admin">Admin</a></li>
                 <li><a href="/register">Register</a></li>
+                <li>
+                    <div id="cart" class="btn btn-primary" aria-label="Cart">
+                        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                        <span class="sr-only">Cart:</span>
+                        <span> Cart is empty</span>
+                    </div>
+                </li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
