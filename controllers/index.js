@@ -3,30 +3,14 @@
 var models = require('../models');
 
 module.exports = function (router) {
-
-    /*router.all('/*', function (req, res, next) {
-        models.Category.findAll().then(function (categories) {
-            res.locals.cat = categories;
-            next();
-        });
-    });*/
-
-
     router.get('/', function (req, res) {
-
-        /*models.User.findAll().then(function(users) {
-            console.log(users);
-            res.render('index');
-        });*/
-
-        models.Category.findAll({
-            include: [ models.Product ]
-        }).then(function(categories) {
-            //console.log(categories);
-            res.render('index', {
-                categories: categories
-            });
-        });
+        console.log(req.session.user);
+        console.log(res.locals._user);
+        res.render('index');
     });
 
+    router.get('/logout', function (req, res) {
+        req.session.user = null;
+        res.redirect('/');
+    });
 };

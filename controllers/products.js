@@ -6,11 +6,23 @@ module.exports = function (router) {
 
     router.get('/', function (req, res) {
         models.Product.findAll({
+            limit: 9,
             order: 'updatedAt DESC',
-        }).then(function(products) {
+        }).then(function (products) {
             res.render('products/index', {
                 products: products
             });
+        });
+    });
+
+    router.get('/all', function (req, res) {
+        models.Product.findAll({
+           // order: 'updatedAt DESC'
+        }).then(function (products) {
+            res.render('products/index', {
+                products: products,
+                all: true
+            })
         });
     });
 

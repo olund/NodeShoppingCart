@@ -10,7 +10,10 @@ Products
         {>"partials/cart" /}
 
         <div class="row">
-            <h1 class="text-capitalize">All products (lazy loaded)</h1>
+            {>"partials/second-nav" /}
+            <div class="page-header">
+                <h1 class="text-capitalize">{?all}All products{:else}Latest products{/all}</h1>
+            </div>
         {?products}
             {#.products}
             <div class="col-lg-4 col-sm-6 col-xs-12">

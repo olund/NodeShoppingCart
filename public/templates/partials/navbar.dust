@@ -12,24 +12,32 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/">Home</a></li>
-                <li {@eq key=active value="products"}class="active"{:else} class="notactive" {/eq}><a href="/products">Products</a></li>
+                <li><a href="/products">Products</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/login">Login</a></li>
-                <li><a href="/admin">Admin</a></li>
-                <li><a href="/register">Register</a></li>
+                {?_user}
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                {:else}
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                {/_user}
+
+                {?_admin}
+                    <li><a href="/admin">Admin</a></li>
+                {/_admin}
+
                 <li>
                     <div id="cart" class="btn btn-primary" aria-label="Cart">
                         <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                         <span class="sr-only">Cart:</span>
                         <span class="cartspan" id="cartspan">
-                            {?.cart}
-                                <span>{.cart.total} kr</span>
-                                <span class="nrOfItems badge">{.cart.nrOfItems}</span>
+                            {?_cart}
+                                <span>{_cart.total} kr</span>
+                                <span class="nrOfItems badge">{_cart.nrOfItems}</span>
                             {:else}
                                  Empty cart
-                            {/cart}
+                            {/_cart}
                         </span>
                     </div>
                 </li>

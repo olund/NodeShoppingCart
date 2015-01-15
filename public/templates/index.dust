@@ -5,62 +5,9 @@ NodeShoppingCart
 {/title}
 
 {<body}
-
-    <div class="full">
-        <h1>Frontpage</h1>
-
-
-
+    <div id="main" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        {>"partials/cart" /}
+        <h1>Projekt för bth</h1>
+        <p>EXEMPELTEXT EXEMPELTEXTEXEMPELTEXT EXEMPELTEXTEXEMPELTEXT EXEMPELTEXTEXEMPELTEXT EXEMPELTEXTEXEMPELTEXT EXEMPELTEXTEXEMPELTEXT EXEMPELTEXTEXEMPELTEXT EXEMPELTEXTEXEMPELTEXT EXEMPELTEXTEXEMPELTEXT EXEMPELTEXTEXEMPELTEXT EXEMPELTEXTEXEMPELTEXT EXEMPELTEXTEXEMPELTEXT EXEMPELTEXTEXEMPELTEXT EXEMPELTEXTEXEMPELTEXT EXEMPELTEXTEXEMPELTEXT EXEMPELTEXTEXEMPELTEXT EXEMPELTEXTEXEMPELTEXT EXEMPELTEXTEXEMPELTEXT EXEMPELTEXTEXEMPELTEXT EXEMPELTEXTEXEMPELTEXT EXEMPELTEXTEXEMPELTEXT EXEMPELTEXTEXEMPELTEXT EXEMPELTEXTEXEMPELTEXT EXEMPELTEXTEXEMPELTEXT EXEMPELTEXTEXEMPELTEXT EXEMPELTEXT</p>
     </div>
-
-    {!}{?categories}
-        {#categories}
-            <h2>{.title}</h2>
-            <ul>
-            {#.Products}
-                <li>Title: {.title}</li>
-                <li>Desc: {.description}</li>
-                <li>Price: {.price}</li>
-
-                <hr>
-            {/.Products}
-            </ul>
-        {/categories}
-    {/categories}{/!}
-
-        {?products}
-            {#products}
-                {!}
-                {@math key=$idx method="mod" operand=3}
-                    {@eq value=0}
-                        <div class="row">
-                            <div class="col-sm-6 col-md-4">
-                                <div class="thumbnail">
-                                    even
-                                </div>
-                            </div>
-                    {:else}
-                        <div class="col-sm-6 col-md-4">
-                            <div class="thumbnail">
-                                odd
-                            </div>
-                        </div>
-                    {/eq}
-                {/math}{/!}
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://placehold.it/300x300" alt="...">
-                        <div class="caption">
-                            <h3>{.title}</h3>
-                            <p>{.description}</p>
-                        </div>
-                    </div>
-                </div>
-
-            {/products}
-
-        {:else}
-            <h2>No Products:( </h2>
-        {/products}
-
 {/body}

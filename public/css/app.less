@@ -18,6 +18,12 @@ body {
 #cart {
     margin-top: 8px;
 }
+/*
+img {
+    opacity: 0;
+    transition: opacity .3s ease-in;
+}
+*/
 
 #cart-box {
     color: #ccc;
@@ -26,12 +32,16 @@ body {
     padding-left: 0;
     padding-right: 0;
     background: #2c3e50;
-    right: -20px;
+    right: -15px;
     z-index: 10000000;
     margin-top: -40px;
 
     #total {
         margin-left: 40px;
+    }
+
+    .price {
+        margin-right: 15px;
     }
 
     .btn-cart {
@@ -52,4 +62,24 @@ body {
 
 .cart-list {
     list-style: none;
+}
+
+.second-nav {
+    text-align: center;
+
+    .btn {
+        width: 200px;
+    }
+
+    span {
+        margin-left: 5px;
+    }
+}
+
+.price {
+    h3 {
+        padding-right: 5px;
+        padding-bottom: 5px;
+        color: #2077b2;
+    }
 }

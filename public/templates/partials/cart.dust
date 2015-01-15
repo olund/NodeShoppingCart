@@ -2,6 +2,6 @@
     <ul class="cart-list" id="#cart-list"></ul>
     <h3><span id="total" class="label label-info"></span></h3>
     <div class="btn-cart">
-        <a class="btn btn-primary" href="/cart/">Goto Cart</a>
+        <a class="btn btn-primary" href="/cart/">Show Cart</a>
     </div>
 </aside>

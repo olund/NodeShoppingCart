@@ -1,0 +1,4 @@
+<div class="second-nav">
+    <span><a class="btn btn-info" href="/products">Latest</a></li></span>
+    <span><a class="btn btn-info" href="/products/all">All</a></li></span>
+</div>

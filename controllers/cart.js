@@ -6,7 +6,7 @@ module.exports = function (router) {
 
     router.get('/', function (req, res) {
         // Get the cart from session
-        var cart = req.session.cart,
+        var cart = req.session.cart || {},
             displayCart = {
                 items: [],
                 total: 0,
@@ -24,6 +24,9 @@ module.exports = function (router) {
         // total the values
         displayCart.total = total;
         displayCart.nrOfItems = nrOfItems;
+
+        console.log(cart);
+        console.log(displayCart);
 
         if (req.xhr) {
             // Send JSON
@@ -58,7 +61,7 @@ module.exports = function (router) {
             if (req.xhr) {
 
             } else {
-                res.redirect('/cart');
+                res.redirect(req.get('referer'));
             }
         });
     });

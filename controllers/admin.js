@@ -10,7 +10,7 @@ module.exports = function (router) {
     router.all('/*', auth.authenticate('admin'));
 
     router.get('/', function (req, res) {
-        res.render('admin/index', { admin: true });
+        res.render('admin/index', { admin: true, /*messages: req.flash()*/ });
     });
 
     /*
