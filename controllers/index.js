@@ -22,7 +22,7 @@ module.exports = function (router) {
         models.Category.findAll({
             include: [ models.Product ]
         }).then(function(categories) {
-            console.log(categories);
+            //console.log(categories);
             res.render('index', {
                 categories: categories
             });

@@ -7,7 +7,6 @@ module.exports = function (router) {
     router.get('/', function (req, res) {
         models.Product.findAll({
             order: 'updatedAt DESC',
-            limit: 9,
         }).then(function(products) {
             res.render('products/index', {
                 products: products

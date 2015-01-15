@@ -5,6 +5,9 @@ $(document).ready(function() {
     var url = $(location).attr('href').split("/");
     console.log(url[url.length-1]);
 
+    // Lazy load images.
+    //$('img').lazyLoadImages();
+
     /**
      * Fix the sidebar ACTIVE-links
      */
@@ -126,7 +129,7 @@ $(document).ready(function() {
                     } else {
                         // Items in cart, loop and show it.
                         $.each(cart.items, function(index, element) {
-                            self.config.list.append('<li class="text-capitalize"><span>' + element.title + '</span><span> ' + element.price + ' kr</span></li>');
+                            self.config.list.append('<li class="text-capitalize"><span>' + element.title + '</span><span class="pull-right"> ' + element.price + ' kr</span></li>');
                         });
                         console.log(cart);
                         self.config.total.append('Total: ' + cart.total);
