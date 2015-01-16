@@ -25,7 +25,7 @@
 
                 {#.Products}
                     <tr>
-                        <td><a href="/products/{categories.title}/{.slug}">{.title}</td>
+                        <td><a href="/products/{categories.slug}/{.slug}">{.title}</td>
                         <td>{.description}</td>
                         <td>{.price}</td>
                     </tr>

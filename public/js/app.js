@@ -5,6 +5,17 @@ $(document).ready(function() {
     var url = $(location).attr('href').split("/");
     console.log(url[url.length-1]);
 
+
+    // SEARCH
+
+    $('input.typeahead').typeahead({
+        name: 'typeahead',
+        remote: '/search?key=%QUERY',
+        limit: 10
+    }).bind('typeahead:selected', function(obj, playground) {
+        window.location.href = playground.href;
+    });
+
     // Lazy load images.
     /*$("img").lazyLoadImages(300, function() {
         $(this).load(function() {

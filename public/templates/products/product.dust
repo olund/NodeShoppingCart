@@ -7,13 +7,35 @@
 {<body}
 
 {?product}
-    <h1>{product.title}</h1>
-    <p>Price: {product.price}</p>
 
-    <form class="" action="/cart/{product.id}" method="POST">
-        <input type="hidden" name="_csrf" value="{_csrf}">
-        <input id="addToCart" type="submit" class="btn btn-info" name="addToCart" value="Add to cart">
-    </form>
+    {>"partials/sidebar" /}
+    <div id="main" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        {>"partials/cart" /}
+
+        <div class="well component">
+            <div class="page-header">
+                <h1 class="text-capitalize">{product.title}</h1>
+            </div>
+
+            <div class="thumbnail">
+                <img src="{product.image}" alt="{product.title}">
+            </div>
+
+            <div class="desc pull-right">
+                <p>{product.description}</p>
+            </div>
+
+            <p>Price: {product.price}</p>
+
+            <form class="" action="/cart/{product.id}" method="POST">
+                <input type="hidden" name="_csrf" value="{_csrf}">
+                <input id="addToCart" type="submit" class="btn btn-info" name="addToCart" value="Add to cart">
+            </form>
+        </div>
+
+    </div>
+
+
 {/product}
 
 {/body}
