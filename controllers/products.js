@@ -5,6 +5,8 @@ var models = require('../models');
 module.exports = function (router) {
 
     router.get('/', function (req, res) {
+        console.log(res.locals._cart, '-----------------------------');
+
         models.Product.findAll({
             limit: 9,
             order: 'updatedAt DESC',

@@ -13,10 +13,11 @@ module.exports = function (router) {
             },
             total = 0,
             nrOfItems = 0;
-
         // ready the produts for display
         for (var item in cart) {
+            cart[item].id = item;
             displayCart.items.push(cart[item]);
+
             total += (cart[item].qty * cart[item].price);
             nrOfItems += cart[item].qty;
         }
@@ -24,9 +25,6 @@ module.exports = function (router) {
         // total the values
         displayCart.total = total;
         displayCart.nrOfItems = nrOfItems;
-
-        console.log(cart);
-        console.log(displayCart);
 
         if (req.xhr) {
             // Send JSON
@@ -54,7 +52,8 @@ module.exports = function (router) {
                 cart[req.params.id] = {
                     title: product.title,
                     price: product.price,
-                    qty: 1
+                    qty: 1,
+                    image: product.image
                 };
             }
 
@@ -70,5 +69,23 @@ module.exports = function (router) {
         // Delete the cart
         req.session.cart = {};
         res.redirect('/cart');
+    });
+
+    router.delete('/:id', function (req, res) {
+        req.session.cart = req.session.cart || {};
+        var cart = req.session.cart;
+
+        console.log(cart);
+
+        if (cart[req.params.id]) {
+            if (cart[req.params.id].qty === 1) {
+                delete cart[req.params.id];
+            } else {
+                cart[req.params.id].qty--;
+            }
+
+        }
+
+        res.redirect(req.get('referer'));
     });
 };

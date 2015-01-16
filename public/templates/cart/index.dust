@@ -13,10 +13,35 @@ Your Cart
         {?cart.items}
             <ul>
             {#cart.items}
-                <li>Title: {.title}</li>
-                <li>Quantity: {.qty}</li>
-                <li>Price: {@math key="{.price}" method="multiply" operand="{.qty}" /}</li>
-                <br>
+                <div class="well product">
+                    <div class="pull-right image">
+                        <img class="img-responsive" src="{.image}?dim=360" alt="{.title}">
+                    </div>
+                    <div class="title">
+                        <h2>Title: {.title}</h2>
+                    </div>
+                    <div class="qty row">
+                        <form class="a pull-left" action="/cart/{.id}" method="POST">
+                            <input type="hidden" name="_csrf" value="{_csrf}">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="submit" class="btn" value="-">
+                        </form>
+
+                        <h4 class="b pull-left">{.qty}</h4>
+
+                        <form class="c pull-left" action="/cart/{.id}" method="POST">
+                            <input type="hidden" name="_csrf" value="{_csrf}">
+                            <input class="btn" type="submit" value="+">
+                        </form>
+                    </div>
+
+                    <div class="price">
+                        <h3>Price: {@math key="{.price}" method="multiply" operand="{.qty}" /}</h3>
+                    </div>
+
+
+                </div>
+
             {/cart.items}
             </ul>
         {/cart.items}

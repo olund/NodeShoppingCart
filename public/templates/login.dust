@@ -8,6 +8,7 @@ LOGIN
 
 <div class="col-lg-12">
     <div class="well bs-component">
+        {>"partials/cart" /}
         <form class="form-horizontal" action="/login" method="POST">
             <fieldset>
                 <legend>Login</legend>

@@ -5,15 +5,18 @@ Register
 {/title}
 
 {<body}
+    <div id="main" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-    <h1>Signup</h1>
-    <form action="/register" method="POST">
-        <input type="hidden" name="_csrf" value="{_csrf}">
-        <input type="text" name="username" placeholder="Username" required>
-        <br>
-        <input type="password" name="password" placeholder="Password" required>
-        <br>
-        <input type="submit" value="Register">
-    </form>
+        {>"partials/cart" /}
+        <h1>Signup</h1>
+        <form action="/register" method="POST">
+            <input type="hidden" name="_csrf" value="{_csrf}">
+            <input type="text" name="username" placeholder="Username" required>
+            <br>
+            <input type="password" name="password" placeholder="Password" required>
+            <br>
+            <input type="submit" value="Register">
+        </form>
+    </div>
 
 {/body}
