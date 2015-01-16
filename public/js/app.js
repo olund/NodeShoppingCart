@@ -1,6 +1,26 @@
 'use strict';
 
 $(document).ready(function() {
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
 
     var url = $(location).attr('href').split("/");
     console.log(url[url.length-1]);
@@ -117,6 +137,12 @@ $(document).ready(function() {
                 url: '/cart/',
                 type: 'GET',
                 dataType: 'json',
+                crossDomain: false,
+                beforeSend: function(xhr, settings) {
+                    if (!csrfSafeMethod(settings.type)) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
+                }
             });
 
             this.bindEvents();
@@ -124,6 +150,7 @@ $(document).ready(function() {
 
         bindEvents: function() {
             this.config.cart.on('click', this.loadCartItems);
+            this.config.addBtn.on('click', this.addItem);
             $(document).on('click', this.slideUpCart);
         },
 
@@ -159,9 +186,18 @@ $(document).ready(function() {
             var self = cart;
             self.config.cartBox.slideUp(100);
         },
+
+        addItem: function (event) {
+            //TODO
+        },
+
+        removeItem: function (event) {
+            //TODO
+        },
     };
 
     cart.init({
+        addBtn: $('.addBtn'),
         cartspan: $('.cartspan'),
         addToCart: $('.addToCart'),
         list: $('.cart-list'),
