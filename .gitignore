@@ -8,3 +8,4 @@ public/components/
 *.log
 tmp/
 coverage/
+public/.cache/
