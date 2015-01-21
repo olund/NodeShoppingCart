@@ -30,14 +30,14 @@ describe('/admin', function () {
     });
 
 
-    it('should say "hello"', function (done) {
+    it('should not be accessible"', function (done) {
         request(mock)
             .get('/admin')
-            .expect(200)
+            .expect(302)
             .expect('Content-Type', /html/)
-            
-                .expect(/"name": "index"/)
-            
+
+                //.expect(/"name": "index"/)
+
             .end(function (err, res) {
                 done(err);
             });

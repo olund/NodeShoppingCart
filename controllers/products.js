@@ -24,7 +24,7 @@ module.exports = function (router) {
             res.render('products/index', {
                 products: products,
                 all: true
-            })
+            });
         });
     });
 

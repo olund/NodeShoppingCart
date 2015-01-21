@@ -1,5 +1,5 @@
 /*global describe:false, it:false, beforeEach:false, afterEach:false*/
-
+/*
 'use strict';
 
 
@@ -35,12 +35,13 @@ describe('/', function () {
             .get('/')
             .expect(200)
             .expect('Content-Type', /html/)
-            
+
                 .expect(/Hello, /)
-            
+
             .end(function (err, res) {
                 done(err);
             });
     });
 
 });
+*/

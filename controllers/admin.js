@@ -128,15 +128,9 @@ module.exports = function (router) {
         });
 
     });
-
+    // TODO: FIX THIS
     router.delete('/products/:id', function (req, res) {
-        db
-            .Products
-            .filter('it.id == id', { id: req.params.id })
-            .removeAll()
-            .then(function () {
-                res.redirect('/admin/products');
-            });
+
     });
 
     /*
@@ -168,34 +162,20 @@ module.exports = function (router) {
         });
     });
 
+    // TODO: FIX THIS
     router.delete('/users/:id', function (req, res) {
-        db
-            .Users
-            .filter('it.id == id', { id: req.params.id })
-            .removeAll()
-            .then(function() {
-                res.redirect('/admin/users');
-            });
+
     });
 
+
+    // TODO: FIX THIS
     router.get('/users/:id', function (req, res) {
-        db
-            .Users
-            .filter('it.id == id', { id: req.params.id })
-            .single(null, null, function (user) {
-                res.render('admin/user', { user: user });
-            });
+
     });
 
+    // TODO: FIX THIS
     router.put('/users/:id', function (req, res) {
-        var user = db.Users.attachOrGet({ id: req.params.id });
-        user.username = req.body.username;
-        user.password = req.body.password;
-        user.role   = req.body.role;
 
-        db.saveChanges().then(function() {
-            res.redirect('/admin/users');
-        });
     });
 
     /*
