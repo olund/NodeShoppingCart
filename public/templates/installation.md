@@ -1,9 +1,9 @@
 #Installation av NodeShoppingCart
-Denna guide visar hur man sätter upp NodeShoppingCart för **OSX Yosemite**.     
-Guiden kräver 4 dependencies som behöver installeras **INNAN** du börjar med installationen av projektet.    
-Den här guiden använder terminalen för att konfigurera och hämta hem projektet.    
-Om du ej vet hur terminalen fungerar bör du ta reda på det innan du ens försöker.   
-   
+Denna guide visar hur man sätter upp NodeShoppingCart för **OSX Yosemite**.
+Guiden kräver 4 dependencies som behöver installeras **INNAN** du börjar med installationen av projektet.
+Den här guiden använder terminalen för att konfigurera och hämta hem projektet.
+Om du ej vet hur terminalen fungerar bör du ta reda på det innan du ens försöker.
+
 
 ##Dependencies
 
@@ -61,10 +61,18 @@ $ npm start
 
 OM något skulle gå fel, kolla i npm-debug loggen och försök lista ut felet, annars skickar du in en buggrapport via github.
 
+##Steg 5 - Klart!
+När allt har laddat klart ser du i konsolen att servern befinner sig på localhost:8000.
+Öppna webläsaren och navigera dit!!
+
 
 ## Optionellt-steg
-Kör testfallen.
+###Kör testfallen.
 
 ```
 $ npm test
 ```
+
+###Använd Nginx som webproxy
+Kicka in nedanstående länk för att använda Nginx som proxy för att hosta flera nodejs applikationer.
+https://www.digitalocean.com/community/tutorials/how-to-host-multiple-node-js-applications-on-a-single-vps-with-nginx-forever-and-crontab

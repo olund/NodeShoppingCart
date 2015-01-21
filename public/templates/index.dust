@@ -7,10 +7,70 @@ NodeShoppingCart
 {<body}
     <div id="main" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         {>"partials/cart" /}
-        <h1>Projekt för bth</h1>
-        <p>
 
+<h1 id="produktpresentation">Produktpresentation</h1>
+<p><a href="http://www.student.bth.se/~heoa13/js/">Javascript på studentserver</a>
+<a href="http://github.com/olund/NodeShoppingCart">Github repo</a>
+[]</p>
+<p>NodeShppingCart är ett projekt för dig som är i behov av en webshop.</p>
+<h2 id="krav-k1-paketera-presentera-och-produktifiera">Krav k1: Paketera, presentera och produktifiera</h2>
+<h3 id="en-presentation-av-vad-din-produkt-g-r-vilket-problem-den-l-ser-">En presentation av vad din &quot;produkt&quot; gör, vilket problem den löser.</h3>
+<p>Det var lätt att välja vad projektet skulle gå ut på, jag har alltid velat skapa en webshop och varför inte göra en nu när man får chansen!
+Tanken med projektet är att visa upp kunskaperna man har lärt sig under kursen och även mer avancerade tekniker.</p>
+<p>Produkter, kategorier och användare är det väsentliga i projektet.</p>
+<h2 id="krav-k2-ha-koll-p-konkurrenterna-och-l-r-av-dem">Krav k2: Ha koll på konkurrenterna och lär av dem</h2>
+<p>Om man söker efter &quot;Nodejs webshop&quot;, &quot;Nodejs ecommerce&quot; hittar man inte mycket nytt. Endast 1 projekt på github och 2 färdiga lösningar.</p>
+<h3 id="krav-och-features">Krav och features</h3>
+<p>Största kravet för mig var att projektet skulle vara skrivit i 100% javascript, både på klientsidan och serversidan. Det tillkommer självklart lite CSS/LESS som tar upp 9.2%.</p>
+<ul>
+<li>MVC designmönster</li>
+<li>ORM för databashantering</li>
+<li>CRUD för kategorier, produkter samt användare.</li>
+<li>AJAX request</li>
+<li>Testning</li>
+</ul>
+<h3 id="n-sta-version">Nästa version</h3>
+<p>Mer Ajax, &quot;page reloads&quot; är fult.
+Större coverage på testningen.</p>
+<h2 id="krav-k3-kvalitet-och-omfattning">Krav k3: Kvalitet och omfattning</h2>
+<p>Jag hade viss erfarenhet av att programmera Nodejs innan kursstarten men aldrig gjort något i ren javascript. Jag valde att göra ett projekt som ligger utanför det vi har lärt oss i kursen eftersom jag anser att det skulle bli mer intressant hur jag skulle lyckats att göra något själv från grunden istället för att förbättre något vi redan har skapat från kursmomenten. Att skriva en hel hemsida i ren javascript var fruktansvärt roligt och lärorikt. Att följa MVC designmönstret vi lärde oss i PHPMVC kursen var väldigt användningsbart och kodstrukturen känns väldigt optimal. Allt har sin egna plats och det är enkelt att navigera runt i filerna.</p>
+<h3 id="mapstruktur">Mapstruktur</h3>
 
-        </p>
+<pre><code>.
+|-- config
+|-- controllers
+|-- lib
+|-- locales
+|   `-- US
+|       `-- en
+|           |-- errors
+|-- models
+|-- public
+|   |-- css
+|   |-- fonts
+|   |-- images
+|   |   `-- products
+|   |-- js
+|   `-- templates
+|       |-- admin
+|       |-- cart
+|       |-- errors
+|       |-- layouts
+|       |-- partials
+|       `-- products
+|-- tasks
+`-- test
+    |-- admin
+    `-- videos
+</code></pre>
+
+<p>I controllers, models och public/templates finner ni den visentliga koden.</p>
+<h2 id="tankar-om-kursen">Tankar om kursen</h2>
+<p>Kursen känns föråldrad, varför inte använda tänket vi körde med i HTMLPHP att vi ska lära oss det &quot;nyaste&quot; för att sedan kunna applicera det när vi börjar jobba inom programmering. När kursen skrivs om hoppas jag att andra elever får lära sig mer av roligare saker såsom ramverk, nya ecmascript 6 och slippa göra tråkiga spel.
+Kursen håller ett lagom tempo och svårighets graden ökar stegvis vilket var mycket positivt. Jag anser att kursen går igenom det vitala för att lära sig hantera javascript på en lagom nivå. JQuery, websockets, Nodejs och prototypbaserad programmering var mycket användbart att lära sig.</p>
+<p>Jag rekommederar denna kursen till programmerare utan förkunskaper om javascript, annars inte.</p>
+<p>Jag ger kursen betyget 7/10.</p>
+
+</body>
     </div>
 {/body}
