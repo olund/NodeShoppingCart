@@ -5,7 +5,8 @@
 
 var kraken = require('kraken-js'),
     express = require('express'),
-    request = require('supertest');
+    request = require('supertest'),
+    models = require('../models');
 
 
 describe('/admin', function () {
@@ -34,7 +35,7 @@ describe('/admin', function () {
         request(mock)
             .get('/admin')
             .expect(302)
-            .expect('Content-Type', /html/)
+            //.expect('Content-Type', /html/)
 
                 //.expect(/"name": "index"/)
 
@@ -42,5 +43,13 @@ describe('/admin', function () {
                 done(err);
             });
     });
+
+    /*it('should work if admin', function (done) {
+        request(mock)
+          .get('/admin', function () {
+
+          });
+
+    });*/
 
 });

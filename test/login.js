@@ -4,11 +4,12 @@
 
 
 var kraken = require('kraken-js'),
-    express = require('express'),
-    request = require('supertest');
+express = require('express'),
+request = require('supertest'),
+models = require('../models');
 
 
-describe('/', function () {
+describe('/admin', function () {
 
     var app, mock;
 
@@ -30,17 +31,15 @@ describe('/', function () {
     });
 
 
-    it('should expect html', function (done) {
+    it('should say "Login"', function (done) {
         request(mock)
-            .get('/')
-            .expect(200)
-            //.expect('/')
-            .expect('Content-Type', /html/)
-            //.expect(/Hello, /)
-
-            .end(function (err, res) {
-                done(err);
-            });
+        .get('/login')
+        .expect(200)
+        .expect('Content-Type', /html/)
+        .expect(/login/)
+        
+        .end(function (err, res) {
+            done(err);
+        });
     });
-
 });
