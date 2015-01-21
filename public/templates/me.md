@@ -1,107 +1,142 @@
 #Produktpresentation
-[Javascript på studentserver](http://www.student.bth.se/~heoa13/js/)
-[Github repo](http://github.com/olund/NodeShoppingCart)
-[]
-
-NodeShppingCart är ett projekt för dig som är i behov av en webshop.
-
-
-
-##Krav k1: Paketera, presentera och produktifiera
-###En presentation av vad din "produkt" gör, vilket problem den löser.
+* [Javascript på studentserver](http://www.student.bth.se/~heoa13/js/)
+* [Github repo](http://github.com/olund/NodeShoppingCart)
+* [LIVE](http://henrikolund.se:8000)
+* [Installations guide](http://henrikolund.se:8000/installation)
 
 Det var lätt att välja vad projektet skulle gå ut på, jag har alltid velat skapa en webshop och varför inte göra en nu när man får chansen!
 Tanken med projektet är att visa upp kunskaperna man har lärt sig under kursen och även mer avancerade tekniker.
 
+Projektet var medelsvårt att implementera, det finns så många olika javascript library's och man vet inte riktigt vad/vilket som är bäst för just min produkt. Som tur var hittade jag KrakenJS tidigt och bestämde mig direkt för att arbeta med det. Jag har tidigare arbetat med ExpressJS och tyckte verkligen om arbetsättet med anonyma funktioner och callbacks men ibland hamnade man i [callback hell](http://callbackhell.com/). KrakenJS är ett lager utanpå ExpressJS och ger struktur samt konvention.
 
-Produkter, kategorier och användare är det väsentliga i projektet.
+Mycket problem med databaser och kopplingar fanns det. Mitt första försök att koppla in en databas i projektet valde jag MongoDB med ORM'n [jaydata](http://jaydata.org/). Det visade sig vara ett uruselt val, varför ska jag krångla till det med en NoSQL databas när jag kan relationsdatabaser såpass bra... MongoDB med Jaydata lyckades jag aldrig skapa arv i, vilket var ett måste för att en kategori måste kunna hantera flera produkter. Efter många dagars försök ändrade mig och det blev istället MySQL samt [Sequelize](http://sequelizejs.com/). Efter ändringen har jag inte stött på några större problem (förutom att jag var tvungen att skriva om 50% av all kod)!
 
 
+##Krav k1: Paketera, presentera och produktifiera
+NodeShppingCart är ett projekt för dig som är i behov av en webshop. Idén med projektet var att visa upp kunskaperna man har lärt sig hittils med att skapa en hyffsad webshop. Webshopen har nuvarande inte en checkout och är allså inte produktions redo ännu men med minimala kunskapar kan man integrera exempelvis paypal smidigt. Designmässigt behövs det också en förbättring men det var inte fokus i projektet.
+
+Webshopen hanterar produkter, kategorier och användare. Det finns en administratör som kan skapa, uppdatera och ta bort allt det väsentliga. En produkt har en titel, beskrivning, pris samt en bild samt är kopplad till en kategori. En produkt kan läggas till i kundvagnen av en gästanvändare utan att behöva logga in, gästanvändaren behöver bara logga in när denna ska checka ut.
 
 
+[Installations guide](http://henrikolund.se:8000/installation)
+
+Självklart finns koden på ett [Github repo](http://github.com/olund/NodeShoppingCart)
 
 
 ##Krav k2: Ha koll på konkurrenterna och lär av dem
-Om man söker efter "Nodejs webshop", "Nodejs ecommerce" hittar man inte mycket nytt. Endast 1 projekt på github och 2 färdiga lösningar.
+Det finns väldigt många webshopar ute på nätet, varför handla i butik när du är ett knapptryck från att beställa det du vill ha på nätet? Det finns många webshopar som jag anser vara riskabla med oseriösa företag, prestandaproblem och användares lösenord lagras i cleartext. Du slipper inte oseriösa företag med mitt projekt men du får åtminstonde en start på en webshop som hanterar användares lösenord med password-hash samt bra prestanda med NodeJS.
+
+Jag har försökt att återskapa en enklare version av [Dustin](https://www.dustinhome.se/) och [Inet](http://inet.se) i hundra procent javascript. Vad jag vet finns det ingen stor webshop som är enbart i javascript och varför inte gå emot strömmen, NodeJS är hett och blir bara större och större för varje dag.
+
+Om man söker efter "Nodejs webshop", "Nodejs ecommerce" hittar man inte mycket nytt. Endast 1 projekt på github och 2 färdiga lösningar. Om man jämför med dustin och inet använder de enbart javascript för frontend och medan deras backend är implementerat i något annat språk än nodejs.
 
 
 ###Krav och features
-Största kravet för mig var att projektet skulle vara skrivit i 100% javascript, både på klientsidan och serversidan. Det tillkommer självklart lite CSS/LESS som tar upp 9.2%.
+Största kravet för mig var att projektet skulle vara skrivit i 100% javascript, både på klientsidan och serversidan. Dock tillkommer det självklart lite CSS/LESS som tar upp 9.2%.
 
-* MVC designmönster
-* ORM för databashantering
-* CRUD för kategorier, produkter samt användare.
-* AJAX request
-* Testning
 
+###Features
+* MVC designmönster.
+* ORM för databashantering.
+* Administration (CRUD för kategorier, produkter samt användare).
+* AJAX request.
+* Testning.
+* Inloggning.
+* Kundvagn, köp av produkter
 
 
 ###Nästa version
-Mer Ajax, "page reloads" är fult.
-Större coverage på testningen.
-
-
-
-
+* Mer Ajax, "page reloads" är fult, särskilt när man lägger till en produkt i kundvagnen.
+* Större coverage på testningen.
+* Bättre felhantering
+* Statistik/grafer över produkter.
+* Checkout
+* Dashboard, visa köpta produkter.
 
 
 ##Krav k3: Kvalitet och omfattning
-Jag hade viss erfarenhet av att programmera Nodejs innan kursstarten men aldrig gjort något i ren javascript. Jag valde att göra ett projekt som ligger utanför det vi har lärt oss i kursen eftersom jag anser att det skulle bli mer intressant hur jag skulle lyckats att göra något själv från grunden istället för att förbättre något vi redan har skapat från kursmomenten. Att skriva en hel hemsida i ren javascript var fruktansvärt roligt och lärorikt. Att följa MVC designmönstret vi lärde oss i PHPMVC kursen var väldigt användningsbart och kodstrukturen känns väldigt optimal. Allt har sin egna plats och det är enkelt att navigera runt i filerna.
+Jag hade viss erfarenhet av att programmera Nodejs innan kursstarten men aldrig gjort något i ren javascript. Jag valde att göra ett projekt som ligger utanför det vi har lärt oss i kursen eftersom jag anser att det skulle bli mer intressant hur jag skulle lyckats att göra något själv från grunden istället för att förbättre något vi redan har skapat från kursmomenten. Att skriva en hel hemsida i javascript/nodejs var fruktansvärt roligt och lärorikt. Att följa MVC designmönstret vi lärde oss i PHPMVC kursen var väldigt användningsbart och kodstrukturen känns väldigt optimal. Allt har sin egna plats och det är enkelt att navigera runt i filerna.
 
-###Mapstruktur
-```
-.
-|-- config
-|-- controllers
-|-- lib
-|-- locales
-|   `-- US
-|       `-- en
-|           |-- errors
-|-- models
-|-- public
-|   |-- css
-|   |-- fonts
-|   |-- images
-|   |   `-- products
-|   |-- js
-|   `-- templates
-|       |-- admin
-|       |-- cart
-|       |-- errors
-|       |-- layouts
-|       |-- partials
-|       `-- products
-|-- tasks
-`-- test
-    |-- admin
-    `-- videos
-```
+###Mappstruktur
+![mappstruktur](http://puu.sh/ePI05/c50de1e911.png)
 
-I controllers, models och public/templates finner ni den väsentliga koden.
+
+
+Något positivt är att jag använder GET, POST, PUT samt DELETE (RESTful) men jag renderar även templates om använderen inte gör ett Ajax request. Det blev en smidig lösning istället för exempelvis enbar använda ajax.
+
+Jag har inte fört någon tidslogg för hur många timmar jag exakt har ägnat åt projektet men jag skulle uppskatta att det är åtminstonde 70-80 timmar med all research.
+
+Jag anser att min kod håller en bra kvalité men designen kan alltid förbättras samt github commit meddelanden måste förbättras i framtiden. När jag var trött på git blev meddelanden "asdf"..
 
 
 ##Optionella krav
-Eftersom min applikation ligger utanför det vi har lärt oss i kursen var det svårt att välja optienlla krav, jag har använt såpass mycket nytt som vi ej lär oss men jag har valt ut de tre största.
+Eftersom min applikation ligger utanför det vi har lärt oss i kursen var det svårt att välja optionella krav, jag har använt såpass mycket nytt som vi ej lär oss men jag har valt ut de tre största.
 
 
-###K1 - Ramverk
-Varför ska man återskapa hjulet var min apporach. Eftersom vi har gått igenom alla grunder i kursmomenten kände jag att för att testa på olika ramverk.
+##K4 - Ramverk
+Varför ska man återskapa hjulet var min apporach. Eftersom vi har gått igenom alla grunder i kursmomenten kände jag för att testa på olika ramverk.
 
-* ExpressJS
-* KrakenJS
-* Sequelize ORM
-* DustJS
-*
+###KrakenJS
+KrakenJS som jag har nämnt tidigare är alltså grunden i allt. KrakenJS sköter routing och allt det nödvändiga.
 
-###K2 - Testning
+###Sequelize ORM
+Sequelize biblioteket ger en enkel tillgång till MySQL, MariaDB, SQLite eller PostgreSQL databaser. Det är alltså en ORM (Object-Relational-Mapper).
 
-###K3 - CLI????
+####Exempelanvädning för att hitta användare med användarnamnen 'test'
+```
+var models = require('../models');
+
+router.get('/länk', function (req, res) {
+    models.User.find({
+        where: {
+            username: 'test'
+        },
+        limit: 100,
+    }).then(function (users) {
+        console.log(users);
+    });
+});
+
+```
+
+###DustJS
+LinkedIns DustJS är "Asynchronous templates" för browsers samt node.js.
+Kolla i public/temlates/* för att se exempel!
+
+
+
+##K5 - Testning
+Testdriven utveckling är en systemutvecklingsmetod som sätter starkt fokus på automatiserad enhetstestning och är något jag har velat försöka använda mig sen vi använda PHPUnit under PHPMVC kursen.
+
+
+
+
+
+
+###jshint fel
+![jshintfel](http://puu.sh/ePHU5/d5e5167083.png)
+
+###Fullt fungerande test
+![Working test cases](http://puu.sh/ePiHZ/602b7babb4.png)
+
+
+
+
+
+
+
+##K6 - CLI???? Byggscript osv Allt runtomkring
+* generator-kraken
+* grunt
+* npm
+* nodemon
+* strong-cli? debugern
+* bower
 
 
 
 ##Tankar om kursen
-Kursen känns föråldrad, varför inte använda tänket vi körde med i HTMLPHP att vi ska lära oss det "nyaste" för att sedan kunna applicera det när vi börjar jobba inom programmering. När kursen skrivs om hoppas jag att andra elever får lära sig mer av roligare saker såsom ramverk, nya ecmascript 6 och slippa göra tråkiga spel.
+Kursen känns föråldrad, varför inte använda tänket vi körde med i HTMLPHP, att vi ska lära oss det "nyaste" för att sedan kunna applicera det när vi börjar jobba inom programmering. När kursen skrivs om hoppas jag att andra elever får lära sig mer av roligare saker såsom ramverk, nya ecmascript 6 och slippa göra tråkiga spel.
 Kursen håller ett lagom tempo och svårighets graden ökar stegvis vilket var mycket positivt. Jag anser att kursen går igenom det vitala för att lära sig hantera javascript på en lagom nivå. JQuery, websockets, Nodejs och prototypbaserad programmering var mycket användbart att lära sig.
 
 Jag rekommederar denna kursen till programmerare utan förkunskaper om javascript, annars inte.
