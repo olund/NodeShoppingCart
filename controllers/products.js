@@ -5,16 +5,25 @@ var models = require('../models');
 module.exports = function (router) {
 
     router.get('/', function (req, res) {
-        console.log(res.locals._cart, '-----------------------------');
 
         models.Product.findAll({
             limit: 9,
             order: 'updatedAt DESC',
         }).then(function (products) {
+            // Get categories for every product..
+            for (var i = 0; i < res.locals.cat.length; i++) {
+                for (var x = 0; x < products.length; x++) {
+                    if (res.locals.cat[i].id == products[x].CategoryId) {
+                        products[x].category = res.locals.cat[i].slug
+                    }
+                }
+            }
+
             res.render('products/index', {
-                products: products
+                products: products,
             });
         });
+
     });
 
     router.get('/all', function (req, res) {
