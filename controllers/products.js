@@ -4,6 +4,15 @@ var models = require('../models');
 
 module.exports = function (router) {
 
+    Array.prototype.chunk = function(chunkSize) {
+        var array=this;
+        return [].concat.apply([],
+            array.map(function(elem,i) {
+                return i%chunkSize ? [] : [array.slice(i,i+chunkSize)];
+            })
+        );
+    }
+
     router.get('/', function (req, res) {
 
         models.Product.findAll({
@@ -19,8 +28,16 @@ module.exports = function (router) {
                 }
             }
 
+            // Limit description text
+            for (var i = 0; i < products.length; i++) {
+                products[i].description = products[i].description.substring(0, 250) + '...';
+            }
+
+            var chunked = products.chunk(3);
+
             res.render('products/index', {
                 products: products,
+                chunked: chunked,
             });
         });
 
