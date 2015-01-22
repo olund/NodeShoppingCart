@@ -13,7 +13,7 @@ Mycket problem med databaser och kopplingar fanns det. Mitt första försök att
 
 
 ##Krav k1: Paketera, presentera och produktifiera
-NodeShppingCart är ett projekt för dig som är i behov av en webshop. Idén med projektet var att visa upp kunskaperna man har lärt sig hittils med att skapa en hyffsad webshop. Webshopen har nuvarande inte en checkout och är allså inte produktions redo ännu men med minimala kunskapar kan man integrera exempelvis paypal smidigt. Designmässigt behövs det också en förbättring men det var inte fokus i projektet.
+NodeShoppingCart är ett projekt för dig som är i behov av en webshop. Idén med projektet var att visa upp kunskaperna man har lärt sig hittils med att skapa en hyffsad webshop. Webshopen har nuvarande inte en checkout och är allså inte produktions redo ännu men med minimala kunskapar kan man integrera exempelvis paypal smidigt. Designmässigt behövs det också en förbättring men det var inte fokus i projektet.
 
 Webshopen hanterar produkter, kategorier och användare. Det finns en administratör som kan skapa, uppdatera och ta bort allt det väsentliga. En produkt har en titel, beskrivning, pris samt en bild samt är kopplad till en kategori. En produkt kan läggas till i kundvagnen av en gästanvändare utan att behöva logga in, gästanvändaren behöver bara logga in när denna ska checka ut.
 
