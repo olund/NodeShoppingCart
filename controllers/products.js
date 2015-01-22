@@ -4,13 +4,11 @@ var models = require('../models');
 
 module.exports = function (router) {
 
-    Array.prototype.chunk = function(chunkSize) {
-        var array=this;
-        return [].concat.apply([],
-            array.map(function(elem,i) {
-                return i%chunkSize ? [] : [array.slice(i,i+chunkSize)];
-            })
-        );
+    function chunk(arr, chunkSize) {
+        var R = [];
+        for (var i=0,len=arr.length; i<len; i+=chunkSize)
+        R.push(arr.slice(i,i+chunkSize));
+        return R;
     }
 
     router.get('/', function (req, res) {
@@ -33,7 +31,7 @@ module.exports = function (router) {
                 products[i].description = products[i].description.substring(0, 250) + '...';
             }
 
-            var chunked = products.chunk(3);
+            var chunked = chunk(products, 3);
 
             res.render('products/index', {
                 products: products,
