@@ -45,8 +45,10 @@ module.exports = function (router) {
         models.Product.findAll({
            // order: 'updatedAt DESC'
         }).then(function (products) {
+            var chunked = chunk(products, parseInt(products.length/3+1));
+
             res.render('products/index', {
-                products: products,
+                chunked: chunked,
                 all: true
             });
         });
