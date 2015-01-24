@@ -15,10 +15,12 @@ module.exports = function (router) {
                 username: req.body.username
             },
             limit: 1
-        }).fail(function () {
+        }).then(function (user) {
+            if (!user) {
                 req.flash('error', 'Username or password is incorrect');
                 res.redirect('/login');
-        }).then(function (user) {
+            }
+
             if (passwordHash.verify(req.body.password, user.password)) {
                 req.session.user = user;
                 req.flash('info', 'Logged in!');
