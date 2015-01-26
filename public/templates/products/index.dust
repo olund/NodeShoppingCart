@@ -27,6 +27,10 @@ Products
                                 <p>{.description}</p>
                             </div>
 
+                            <span class="price pull-right">
+                                <h3>{.price} Kr</h3>
+                            </span>
+
                             <form action="/cart/{.id}" method="POST">
                                 <input type="hidden" name="_csrf" value="{_csrf}">
                                 <input type="submit" class="btn btn-info btn.sm addToCart" value="Add to cart">
