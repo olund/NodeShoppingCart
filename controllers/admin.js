@@ -10,7 +10,7 @@ module.exports = function (router) {
     router.all('/*', auth.authenticate('admin'));
 
     router.get('/', function (req, res) {
-        res.render('admin/index', { admin: true, /*messages: req.flash()*/ });
+        res.render('admin/index', { admin: true, messages: req.flash() });
     });
 
     /*
@@ -179,12 +179,12 @@ module.exports = function (router) {
     });
 
 
-    // TODO: FIX THIS
+    // TODO:
     router.get('/users/:id', function (req, res) {
 
     });
 
-    // TODO: FIX THIS
+    // TODO
     router.put('/users/:id', function (req, res) {
 
     });

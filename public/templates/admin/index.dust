@@ -3,6 +3,7 @@
 {<title}
     Admin
 {/title}
+{<body}
 
  <nav class="navbar navbar-default navbar-static-top">
       <div class="container">
@@ -63,6 +64,6 @@
         </div>
       </div>
     </div>
-{<body}
+
 
 {/body}
