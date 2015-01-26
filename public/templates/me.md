@@ -64,7 +64,7 @@ Jag hade viss erfarenhet av att programmera Nodejs innan kursstarten men aldrig 
 
 Något positivt är att jag använder GET, POST, PUT samt DELETE (RESTful) men jag renderar även templates om använderen inte gör ett Ajax request. Det blev en smidig lösning istället för exempelvis enbar använda ajax.
 
-Jag har inte fört någon tidslogg för hur många timmar jag exakt har ägnat åt projektet men jag skulle uppskatta att det är åtminstonde 70-80 timmar med all research.
+Jag har inte fört någon tidslogg för hur många timmar jag exakt har ägnat åt projektet men jag skulle uppskatta att det är åtminstonde 80-90 timmar med all research.
 
 Jag anser att min kod håller en bra kvalité men designen kan alltid förbättras samt github commit meddelanden måste förbättras i framtiden. När jag var trött på git blev meddelanden "asdf"..
 
@@ -73,8 +73,24 @@ Jag anser att min kod håller en bra kvalité men designen kan alltid förbättr
 Eftersom min applikation ligger utanför det vi har lärt oss i kursen var det svårt att välja optionella krav, jag har använt såpass mycket nytt som vi ej lär oss men jag har valt ut de tre största.
 
 
-##K4 - Ramverk
-Varför ska man återskapa hjulet var min apporach. Eftersom vi har gått igenom alla grunder i kursmomenten kände jag för att testa på olika ramverk.
+##K4 - NodeJS med CLI verktyg
+När man arbetar i NodeJS använder man terminalen väldigt mycket och för mig blir arbetsättet väldigt logiskt. För att kunna hantera projektet behöver man ha kunskap om följande verktyg:
+* generator-kraken
+* grunt
+* npm
+* nodemon
+* strongloop
+* bower
+
+Det som används mest i projeket är npm, nodemon och strong-cli. För att använda NPM behövs en `.package.json` fil där all konfiguration finns.NPM läser filen för att veta vad som skall göras och exempel på detta är `npm start`, `npm install` och `npm test`.
+
+Ett måste för att utveckla ett projekt är en debuger och jag valde att använda strongloop. För att slippa skriva `console.log` i varenda route behöver man bara skriva ett kommando i konsollen och det är `slc debug`. Man får då upp ett liknande verktyg som google chrome's där man kan sätta breakpoints se live output.
+
+
+##K5 - Ramverk
+Varför ska man återskapa hjulet var min apporach. Eftersom vi har gått igenom alla grunder i kursmomenten kände jag för att använda mig av olika ramverk för att snabba upp utvecklingen. Att använda olika ramverk/bibliotek är både positivt och negativt eftersom det är mycket dokumentation som måste läsas men det snabbar upp utvecklingen i och med att det finns mycket kod att återanvända. En annan nackdel är att kvalitén kan skilja sig otroligt mycket och för att säkerhetställa att jag valde rätt kollade jag populariteten på paketen innan jag började använda dem.
+
+Tyvärr gjorde jag ett stort misstag i början av projektet genom att använda jaydata (nämns tidigare), jag läste inte igenom hur det fungerade tillräckligt bra och såg inte att projektet var nerlagt. Inför nästa projekt kommer detta definitivt inte hände och nu förstår jag verkligen att man måste planera bättre.
 
 ###KrakenJS
 KrakenJS som jag har nämnt tidigare är alltså grunden i allt. KrakenJS sköter routing och allt det nödvändiga.
@@ -82,7 +98,7 @@ KrakenJS som jag har nämnt tidigare är alltså grunden i allt. KrakenJS sköte
 ###Sequelize ORM
 Sequelize biblioteket ger en enkel tillgång till MySQL, MariaDB, SQLite eller PostgreSQL databaser. Det är alltså en ORM (Object-Relational-Mapper).
 
-####Exempelanvädning för att hitta användare med användarnamnen 'test'
+####Exempelanvädning av Sequelize för att hitta användare med användarnamnet 'test'
 ```
 var models = require('../models');
 
@@ -101,19 +117,40 @@ router.get('/länk', function (req, res) {
 
 ###DustJS
 LinkedIns DustJS är "Asynchronous templates" för browsers samt node.js.
-Kolla i public/temlates/* för att se exempel!
+Kolla in public/temlates/* för att se exempel!
 
 
 
-##K5 - Testning
-Testdriven utveckling är en systemutvecklingsmetod som sätter starkt fokus på automatiserad enhetstestning och är något jag har velat försöka använda mig sen vi använda PHPUnit under PHPMVC kursen.
+##K6 - Testning
+Testdriven utveckling är en systemutvecklingsmetod som sätter starkt fokus på automatiserad enhetstestning och är något jag har velat använda mig sen vi använde PHPUnit under PHPMVC kursen.
+
+Mina kunskaper var begränsade vid start av projektet och tyvärr blev testningen lidande. Fokus i projektet blev istället implementation av krav. Jag tycker ändå att testning är väldigt viktigt och bör alltid ske i ett projekt och det är därför det finns med som ett optionellt krav i mitt projekt.
 
 
+När jag testar min kod använde jag Grunt som är ett byggsystem (nämns ovanför) och grunt kallar på
+[Mocha](https://github.com/mochajs/mocha) som kör enhetstester. Grunt kör även Jshint test för att kolla att koden håller hög kvalité och att alla inblandade medlemmar använder sig av samma kodstruktur. I `.jshintrc` filen finns kodstandarden alla inblandade följer.
+
+Mocha är väldigt populärt bibliotek för att testa javascript kod och en utan kodkunskapar kan följa vad som händer eftersom det är väldigt beskrivande.
+
+####Ett exempel på ett testfall ser ut såhär:
+
+```
+it('should say "Cart"', function (done) {
+    request(mock)
+        .get('/cart') // Hämtar addressen /cart
+        .expect(200) // Förväntar sig 200 statuskod
+        .expect('Content-Type', /html/) // Förväntar sig att det skall vara html
+        .expect(/cart/) // Förväntar sig att url'en skall vara /cart
+
+    .end(function (err, res) {
+        done(err);
+    });
+});
+
+```
 
 
-
-
-###jshint fel
+###JSHINT fel
 ![jshintfel](http://puu.sh/ePHU5/d5e5167083.png)
 
 ###Fullt fungerande test
@@ -125,13 +162,6 @@ Testdriven utveckling är en systemutvecklingsmetod som sätter starkt fokus på
 
 
 
-##K6 - CLI???? Byggscript osv Allt runtomkring
-* generator-kraken
-* grunt
-* npm
-* nodemon
-* strong-cli? debugern
-* bower
 
 
 
@@ -143,3 +173,5 @@ Jag rekommederar denna kursen till programmerare utan förkunskaper om javascrip
 
 
 Jag ger kursen betyget 7/10.
+
+// Henrik Ölund

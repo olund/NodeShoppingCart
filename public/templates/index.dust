@@ -19,7 +19,7 @@ Tanken med projektet är att visa upp kunskaperna man har lärt sig under kursen
 <p>Projektet var medelsvårt att implementera, det finns så många olika javascript library&#39;s och man vet inte riktigt vad/vilket som är bäst för just min produkt. Som tur var hittade jag KrakenJS tidigt och bestämde mig direkt för att arbeta med det. Jag har tidigare arbetat med ExpressJS och tyckte verkligen om arbetsättet med anonyma funktioner och callbacks men ibland hamnade man i <a href="http://callbackhell.com/">callback hell</a>. KrakenJS är ett lager utanpå ExpressJS och ger struktur samt konvention.</p>
 <p>Mycket problem med databaser och kopplingar fanns det. Mitt första försök att koppla in en databas i projektet valde jag MongoDB med ORM&#39;n <a href="http://jaydata.org/">jaydata</a>. Det visade sig vara ett uruselt val, varför ska jag krångla till det med en NoSQL databas när jag kan relationsdatabaser såpass bra... MongoDB med Jaydata lyckades jag aldrig skapa arv i, vilket var ett måste för att en kategori måste kunna hantera flera produkter. Efter många dagars försök ändrade mig och det blev istället MySQL samt <a href="http://sequelizejs.com/">Sequelize</a>. Efter ändringen har jag inte stött på några större problem (förutom att jag var tvungen att skriva om 50% av all kod)!</p>
 <h2 id="krav-k1-paketera-presentera-och-produktifiera">Krav k1: Paketera, presentera och produktifiera</h2>
-<p>NodeShppingCart är ett projekt för dig som är i behov av en webshop. Idén med projektet var att visa upp kunskaperna man har lärt sig hittils med att skapa en hyffsad webshop. Webshopen har nuvarande inte en checkout och är allså inte produktions redo ännu men med minimala kunskapar kan man integrera exempelvis paypal smidigt. Designmässigt behövs det också en förbättring men det var inte fokus i projektet.</p>
+<p>NodeShoppingCart är ett projekt för dig som är i behov av en webshop. Idén med projektet var att visa upp kunskaperna man har lärt sig hittils med att skapa en hyffsad webshop. Webshopen har nuvarande inte en checkout och är allså inte produktions redo ännu men med minimala kunskapar kan man integrera exempelvis paypal smidigt. Designmässigt behövs det också en förbättring men det var inte fokus i projektet.</p>
 <p>Webshopen hanterar produkter, kategorier och användare. Det finns en administratör som kan skapa, uppdatera och ta bort allt det väsentliga. En produkt har en titel, beskrivning, pris samt en bild samt är kopplad till en kategori. En produkt kan läggas till i kundvagnen av en gästanvändare utan att behöva logga in, gästanvändaren behöver bara logga in när denna ska checka ut.</p>
 <p><a href="http://henrikolund.se:8000/installation">Installations guide</a></p>
 <p>Självklart finns koden på ett <a href="http://github.com/olund/NodeShoppingCart">Github repo</a></p>
@@ -53,17 +53,30 @@ Tanken med projektet är att visa upp kunskaperna man har lärt sig under kursen
 <h3 id="mappstruktur">Mappstruktur</h3>
 <p><img src="http://puu.sh/ePI05/c50de1e911.png" alt="mappstruktur"></p>
 <p>Något positivt är att jag använder GET, POST, PUT samt DELETE (RESTful) men jag renderar även templates om använderen inte gör ett Ajax request. Det blev en smidig lösning istället för exempelvis enbar använda ajax.</p>
-<p>Jag har inte fört någon tidslogg för hur många timmar jag exakt har ägnat åt projektet men jag skulle uppskatta att det är åtminstonde 70-80 timmar med all research.</p>
+<p>Jag har inte fört någon tidslogg för hur många timmar jag exakt har ägnat åt projektet men jag skulle uppskatta att det är åtminstonde 80-90 timmar med all research.</p>
 <p>Jag anser att min kod håller en bra kvalité men designen kan alltid förbättras samt github commit meddelanden måste förbättras i framtiden. När jag var trött på git blev meddelanden &quot;asdf&quot;..</p>
 <h2 id="optionella-krav">Optionella krav</h2>
 <p>Eftersom min applikation ligger utanför det vi har lärt oss i kursen var det svårt att välja optionella krav, jag har använt såpass mycket nytt som vi ej lär oss men jag har valt ut de tre största.</p>
-<h2 id="k4-ramverk">K4 - Ramverk</h2>
-<p>Varför ska man återskapa hjulet var min apporach. Eftersom vi har gått igenom alla grunder i kursmomenten kände jag för att testa på olika ramverk.</p>
+<h2 id="k4-nodejs-med-cli-verktyg">K4 - NodeJS med CLI verktyg</h2>
+<p>När man arbetar i NodeJS använder man terminalen väldigt mycket och för mig blir arbetsättet väldigt logiskt. För att kunna hantera projektet behöver man ha kunskap om följande verktyg:</p>
+<ul>
+<li>generator-kraken</li>
+<li>grunt</li>
+<li>npm</li>
+<li>nodemon</li>
+<li>strongloop</li>
+<li>bower</li>
+</ul>
+<p>Det som används mest i projeket är npm, nodemon och strong-cli. För att använda NPM behövs en <code>.package.json</code> fil där all konfiguration finns.NPM läser filen för att veta vad som skall göras och exempel på detta är <code>npm start</code>, <code>npm install</code> och <code>npm test</code>.</p>
+<p>Ett måste för att utveckla ett projekt är en debuger och jag valde att använda strongloop. För att slippa skriva <code>console.log</code> i varenda route behöver man bara skriva ett kommando i konsollen och det är <code>slc debug</code>. Man får då upp ett liknande verktyg som google chrome&#39;s där man kan sätta breakpoints se live output.</p>
+<h2 id="k5-ramverk">K5 - Ramverk</h2>
+<p>Varför ska man återskapa hjulet var min apporach. Eftersom vi har gått igenom alla grunder i kursmomenten kände jag för att använda mig av olika ramverk för att snabba upp utvecklingen. Att använda olika ramverk/bibliotek är både positivt och negativt eftersom det är mycket dokumentation som måste läsas men det snabbar upp utvecklingen i och med att det finns mycket kod att återanvända. En annan nackdel är att kvalitén kan skilja sig otroligt mycket och för att säkerhetställa att jag valde rätt kollade jag populariteten på paketen innan jag började använda dem.</p>
+<p>Tyvärr gjorde jag ett stort misstag i början av projektet genom att använda jaydata (nämns tidigare), jag läste inte igenom hur det fungerade tillräckligt bra och såg inte att projektet var nerlagt. Inför nästa projekt kommer detta definitivt inte hände och nu förstår jag verkligen att man måste planera bättre.</p>
 <h3 id="krakenjs">KrakenJS</h3>
 <p>KrakenJS som jag har nämnt tidigare är alltså grunden i allt. KrakenJS sköter routing och allt det nödvändiga.</p>
 <h3 id="sequelize-orm">Sequelize ORM</h3>
 <p>Sequelize biblioteket ger en enkel tillgång till MySQL, MariaDB, SQLite eller PostgreSQL databaser. Det är alltså en ORM (Object-Relational-Mapper).</p>
-<h4 id="exempelanv-dning-f-r-att-hitta-anv-ndare-med-anv-ndarnamnen-test-">Exempelanvädning för att hitta användare med användarnamnen &#39;test&#39;</h4>
+<h4 id="exempelanv-dning-av-sequelize-f-r-att-hitta-anv-ndare-med-anv-ndarnamnet-test-">Exempelanvädning av Sequelize för att hitta användare med användarnamnet &#39;test&#39;</h4>
 <pre><code>var models = require(&#39;../models&#39;);
 
 router.get(&#39;/länk&#39;, function (req, res) {
@@ -78,25 +91,33 @@ router.get(&#39;/länk&#39;, function (req, res) {
 });
 </code></pre><h3 id="dustjs">DustJS</h3>
 <p>LinkedIns DustJS är &quot;Asynchronous templates&quot; för browsers samt node.js.
-Kolla i public/temlates/* för att se exempel!</p>
-<h2 id="k5-testning">K5 - Testning</h2>
-<p>Testdriven utveckling är en systemutvecklingsmetod som sätter starkt fokus på automatiserad enhetstestning och något jag har velat försöka använda mig sen vi använda PHPUnit under PHPMVC kursen.</p>
-<h3 id="jshint-fel">jshint fel</h3>
+Kolla in public/temlates/* för att se exempel!</p>
+<h2 id="k6-testning">K6 - Testning</h2>
+<p>Testdriven utveckling är en systemutvecklingsmetod som sätter starkt fokus på automatiserad enhetstestning och är något jag har velat använda mig sen vi använde PHPUnit under PHPMVC kursen.</p>
+<p>Mina kunskaper var begränsade vid start av projektet och tyvärr blev testningen lidande. Fokus i projektet blev istället implementation av krav. Jag tycker ändå att testning är väldigt viktigt och bör alltid ske i ett projekt och det är därför det finns med som ett optionellt krav i mitt projekt.</p>
+<p>När jag testar min kod använde jag Grunt som är ett byggsystem (nämns ovanför) och grunt kallar på
+<a href="https://github.com/mochajs/mocha">Mocha</a> som kör enhetstester. Grunt kör även Jshint test för att kolla att koden håller hög kvalité och att alla inblandade medlemmar använder sig av samma kodstruktur. I <code>.jshintrc</code> filen finns kodstandarden alla inblandade följer.</p>
+<p>Mocha är väldigt populärt bibliotek för att testa javascript kod och en utan kodkunskapar kan följa vad som händer eftersom det är väldigt beskrivande.</p>
+<h4 id="ett-exempel-p-ett-testfall-ser-ut-s-h-r-">Ett exempel på ett testfall ser ut såhär:</h4>
+<pre><code>it(&#39;should say &quot;Cart&quot;&#39;, function (done) {
+    request(mock)
+        .get(&#39;/cart&#39;) // Hämtar addressen /cart
+        .expect(200) // Förväntar sig 200 statuskod
+        .expect(&#39;Content-Type&#39;, /html/) // Förväntar sig att det skall vara html
+        .expect(/cart/) // Förväntar sig att url&#39;en skall vara /cart
+
+    .end(function (err, res) {
+        done(err);
+    });
+});
+</code></pre><h3 id="jshint-fel">JSHINT fel</h3>
 <p><img src="http://puu.sh/ePHU5/d5e5167083.png" alt="jshintfel"></p>
 <h3 id="fullt-fungerande-test">Fullt fungerande test</h3>
 <p><img src="http://puu.sh/ePiHZ/602b7babb4.png" alt="Working test cases"></p>
-<h2 id="k6-cli-byggscript-osv-allt-runtomkring">K6 - CLI???? Byggscript osv Allt runtomkring</h2>
-<ul>
-<li>generator-kraken</li>
-<li>grunt</li>
-<li>npm</li>
-<li>nodemon</li>
-<li>strong-cli? debugern</li>
-<li>bower</li>
-</ul>
 <h2 id="tankar-om-kursen">Tankar om kursen</h2>
 <p>Kursen känns föråldrad, varför inte använda tänket vi körde med i HTMLPHP, att vi ska lära oss det &quot;nyaste&quot; för att sedan kunna applicera det när vi börjar jobba inom programmering. När kursen skrivs om hoppas jag att andra elever får lära sig mer av roligare saker såsom ramverk, nya ecmascript 6 och slippa göra tråkiga spel.
 Kursen håller ett lagom tempo och svårighets graden ökar stegvis vilket var mycket positivt. Jag anser att kursen går igenom det vitala för att lära sig hantera javascript på en lagom nivå. JQuery, websockets, Nodejs och prototypbaserad programmering var mycket användbart att lära sig.</p>
 <p>Jag rekommederar denna kursen till programmerare utan förkunskaper om javascript, annars inte.</p>
 <p>Jag ger kursen betyget 7/10.</p>
+<p>// Henrik Ölund</p>
 {/body}
