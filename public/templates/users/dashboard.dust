@@ -1,0 +1,21 @@
+{>"layouts/master" /}
+
+{<title}
+Dashboard
+{/title}
+
+{<body}
+
+<div id="main" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="well bs-component">
+
+        <p>
+            (This functioanlity will be implemented in v2);
+        </p>
+
+        <p>
+            This is THE dashboard, you can see your purchases etc..
+        </p>
+    </div>
+</div>
+{/body}

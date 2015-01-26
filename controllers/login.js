@@ -19,6 +19,7 @@ module.exports = function (router) {
             if (!user) {
                 req.flash('error', 'Username or password is incorrect');
                 res.redirect('/login');
+                return;
             }
 
             if (passwordHash.verify(req.body.password, user.password)) {

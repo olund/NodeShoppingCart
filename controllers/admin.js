@@ -31,7 +31,7 @@ module.exports = function (router) {
                 res.render('admin/products', {
                     title: 'Admin - Products',
                     categories: category,
-                    messages: req.flash(),
+                    //messages: req.flash(),
                 });
             }
 
