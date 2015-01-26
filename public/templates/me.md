@@ -87,9 +87,15 @@ Inför projektet krävdes det att jag skulle lära mig följande verktyg för at
 * bower
 
 
-Det som används mest i projeket är npm, nodemon och strong-cli. För att använda NPM behövs en `.package.json` fil där all konfiguration finns. NPM läser filen för att veta vad som skall göras och exempel på detta är `npm start`, `npm install` och `npm test`.
+Det som används mest i projeket är npm, nodemon och strong-cli. För att använda NPM behövs en `.package.json` fil där all konfiguration finns. NPM läser filen för att veta vad som skall göras och exempel på detta är `npm start`, `npm install` och `npm test`. För att slippa starta om nodejs servern vid varje kodändring används `nodemon`. Nodemon kollar om filer har ändrats och bestämmer själv om det behövs en omstart eller inte.
 
 Ett måste för att utveckla ett projekt är en debuger och jag valde att använda strongloop. För att slippa skriva `console.log` i varenda route behöver man bara skriva ett kommando i konsollen och det är `slc debug`. Man får då upp ett liknande verktyg som google chrome's där man kan sätta breakpoints samt se live output.
+
+Ett stortproblem för mig var att jag aldrig visste om en viss funktion/route triggade, nu när jag jobbar mycket i terminalen kan jag enkelt se vad som körs.
+```
+213.80.115.208 - - [26/Jan/2015:18:24:22 +0000] "GET /products HTTP/1.1" 200 6169 "http://henrikolund.se:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2287.0 Safari/537.36"
+```
+Ovanstående rad ser man att det har varit en webbläsare som har kört en GET request till henrikolund.se:8000/ och jag ser att statuskoden är 200 vilket betyder "OK".
 
 
 ##K5 - Ramverk

@@ -58,7 +58,9 @@ Tanken med projektet är att visa upp kunskaperna man har lärt sig under kursen
 <h2 id="optionella-krav">Optionella krav</h2>
 <p>Eftersom min applikation ligger utanför det vi har lärt oss i kursen var det svårt att välja optionella krav, jag har använt såpass mycket nytt som vi ej lär oss men jag har valt ut de tre största.</p>
 <h2 id="k4-nodejs-med-cli-verktyg">K4 - NodeJS med CLI verktyg</h2>
-<p>När man arbetar i NodeJS använder man terminalen väldigt mycket och för mig blir arbetsättet väldigt logiskt. För att kunna hantera projektet behöver man ha kunskap om följande verktyg:</p>
+<p>När man arbetar i NodeJS använder man terminalen väldigt mycket och för mig blir arbetsättet väldigt logiskt och det finns inget annat arbetsätt som är bättre. Allt sker på ett ögenblick och man får respons direkt.</p>
+<p>För att kunna hantera projektet behöver man ha kunskap om terminalen samt ett flertal verktyg. Detta kräver en högre insats av utvecklaren men man får väldigt mycket tillbaka bland annat högre kontroll och mer effektivitet.</p>
+<p>Inför projektet krävdes det att jag skulle lära mig följande verktyg för att verkligen kunna arbeta effektivt med node.js.</p>
 <ul>
 <li>generator-kraken</li>
 <li>grunt</li>
@@ -67,10 +69,14 @@ Tanken med projektet är att visa upp kunskaperna man har lärt sig under kursen
 <li>strongloop</li>
 <li>bower</li>
 </ul>
-<p>Det som används mest i projeket är npm, nodemon och strong-cli. För att använda NPM behövs en <code>.package.json</code> fil där all konfiguration finns.NPM läser filen för att veta vad som skall göras och exempel på detta är <code>npm start</code>, <code>npm install</code> och <code>npm test</code>.</p>
-<p>Ett måste för att utveckla ett projekt är en debuger och jag valde att använda strongloop. För att slippa skriva <code>console.log</code> i varenda route behöver man bara skriva ett kommando i konsollen och det är <code>slc debug</code>. Man får då upp ett liknande verktyg som google chrome&#39;s där man kan sätta breakpoints se live output.</p>
+<p>Det som används mest i projeket är npm, nodemon och strong-cli. För att använda NPM behövs en <code>.package.json</code> fil där all konfiguration finns. NPM läser filen för att veta vad som skall göras och exempel på detta är <code>npm start</code>, <code>npm install</code> och <code>npm test</code>. För att slippa starta om nodejs servern vid varje kodändring används <code>nodemon</code>. Nodemon kollar om filer har ändrats och bestämmer själv om det behövs en omstart eller inte.</p>
+<p>Ett måste för att utveckla ett projekt är en debuger och jag valde att använda strongloop. För att slippa skriva <code>console.log</code> i varenda route behöver man bara skriva ett kommando i konsollen och det är <code>slc debug</code>. Man får då upp ett liknande verktyg som google chrome&#39;s där man kan sätta breakpoints samt se live output.</p>
+<p>Ett stortproblem för mig var att jag aldrig visste om en viss funktion/route triggade, nu när jag jobbar mycket i terminalen kan jag enkelt se vad som körs.</p>
+<pre><code>213.80.115.208 - - [26/Jan/2015:18:24:22 +0000] &quot;GET /products HTTP/1.1&quot; 200 6169 &quot;http://henrikolund.se:8000/&quot; &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2287.0 Safari/537.36&quot;
+</code></pre><p>Ovanstående rad ser man att det har varit en webbläsare som har kört en GET request till henrikolund.se:8000/ och jag ser att statuskoden är 200 vilket betyder &quot;OK&quot;.</p>
 <h2 id="k5-ramverk">K5 - Ramverk</h2>
-<p>Varför ska man återskapa hjulet var min apporach. Eftersom vi har gått igenom alla grunder i kursmomenten kände jag för att använda mig av olika ramverk för att snabba upp utvecklingen. Att använda olika ramverk/bibliotek är både positivt och negativt eftersom det är mycket dokumentation som måste läsas men det snabbar upp utvecklingen i och med att det finns mycket kod att återanvända. En annan nackdel är att kvalitén kan skilja sig otroligt mycket och för att säkerhetställa att jag valde rätt kollade jag populariteten på paketen innan jag började använda dem.</p>
+<p>Varför ska man återskapa hjulet var min apporach. Eftersom vi har gått igenom alla grunder i kursmomenten var mitt mål att
+använda mig av olika ramverk för att snabba upp utvecklingen. Att använda olika ramverk/bibliotek är både positivt och negativt eftersom det är mycket dokumentation som måste läsas men det snabbar upp utvecklingen i och med att det finns mycket kod att återanvända. En annan nackdel är att kvalitén kan skilja sig otroligt mycket och för att säkerhetställa att jag valde rätt kollade jag populariteten på paketen innan jag började använda dem.</p>
 <p>Tyvärr gjorde jag ett stort misstag i början av projektet genom att använda jaydata (nämns tidigare), jag läste inte igenom hur det fungerade tillräckligt bra och såg inte att projektet var nerlagt. Inför nästa projekt kommer detta definitivt inte hände och nu förstår jag verkligen att man måste planera bättre.</p>
 <h3 id="krakenjs">KrakenJS</h3>
 <p>KrakenJS som jag har nämnt tidigare är alltså grunden i allt. KrakenJS sköter routing och allt det nödvändiga.</p>
@@ -99,18 +105,8 @@ Kolla in public/temlates/* för att se exempel!</p>
 <a href="https://github.com/mochajs/mocha">Mocha</a> som kör enhetstester. Grunt kör även Jshint test för att kolla att koden håller hög kvalité och att alla inblandade medlemmar använder sig av samma kodstruktur. I <code>.jshintrc</code> filen finns kodstandarden alla inblandade följer.</p>
 <p>Mocha är väldigt populärt bibliotek för att testa javascript kod och en utan kodkunskapar kan följa vad som händer eftersom det är väldigt beskrivande.</p>
 <h4 id="ett-exempel-p-ett-testfall-ser-ut-s-h-r-">Ett exempel på ett testfall ser ut såhär:</h4>
-<pre><code>it(&#39;should say &quot;Cart&quot;&#39;, function (done) {
-    request(mock)
-        .get(&#39;/cart&#39;) // Hämtar addressen /cart
-        .expect(200) // Förväntar sig 200 statuskod
-        .expect(&#39;Content-Type&#39;, /html/) // Förväntar sig att det skall vara html
-        .expect(/cart/) // Förväntar sig att url&#39;en skall vara /cart
-
-    .end(function (err, res) {
-        done(err);
-    });
-});
-</code></pre><h3 id="jshint-fel">JSHINT fel</h3>
+<p><img src="http://puu.sh/f31Pj/1bdd6653ce.png" alt="sequelize"></p>
+<h3 id="jshint-fel">JSHINT fel</h3>
 <p><img src="http://puu.sh/ePHU5/d5e5167083.png" alt="jshintfel"></p>
 <h3 id="fullt-fungerande-test">Fullt fungerande test</h3>
 <p><img src="http://puu.sh/ePiHZ/602b7babb4.png" alt="Working test cases"></p>
