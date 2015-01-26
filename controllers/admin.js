@@ -70,7 +70,6 @@ module.exports = function (router) {
      * Get a product product.
      */
     router.get('/products/:id', function (req, res) {
-        console.log('KÖRDES');
         // Get categories
         models.Category.findAll().then(function (categories) {
             // Get products
@@ -126,11 +125,17 @@ module.exports = function (router) {
             req.flash('success', 'Product edited, affected rows: ' + c);
             res.redirect('/admin/products/' + req.params.id);
         });
-
     });
-    // TODO: FIX THIS
-    router.delete('/products/:id', function (req, res) {
 
+    router.delete('/products/:id', function (req, res) {
+        models.Product.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function () {
+            req.flash('info', 'Deleted the product');
+            res.redirect('/admin/products');
+        });
     });
 
     /*
@@ -162,9 +167,15 @@ module.exports = function (router) {
         });
     });
 
-    // TODO: FIX THIS
     router.delete('/users/:id', function (req, res) {
-
+        models.User.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function () {
+            req.flash('info', 'Deleted the user');
+            res.redirect('/admin/users');
+        });
     });
 
 

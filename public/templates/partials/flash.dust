@@ -1,34 +1,36 @@
 {?messages}
-    {#messages}
-        {?success}
-            {#success}
-                <div class="alert alert-success" role="alert">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    {.}
-                </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        {#messages}
+            {?success}
+                {#success}
+                    <div class="alert alert-success" role="alert">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        {.}
+                    </div>
+                {/success}
             {/success}
-        {/success}
 
-        {!}<div class="alert alert-warning" role="alert">{.}</div>{/!}
-        {?error}
-            {#error}
-                <div class="alert alert-danger" role="alert">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    {.}
-                </div>
+            {!}<div class="alert alert-warning" role="alert">{.}</div>{/!}
+            {?error}
+                {#error}
+                    <div class="alert alert-danger" role="alert">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        {.}
+                    </div>
+                {/error}
             {/error}
-        {/error}
 
-        {?info}
-            {#info}
-                <div class="alert alert-info" role="alert">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    {.}
-                </div>
+            {?info}
+                {#info}
+                    <div class="alert alert-info" role="alert">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        {.}
+                    </div>
+                {/info}
             {/info}
-        {/info}
 
 
-    {/messages}
+        {/messages}
+    </div>
 {/messages}
 

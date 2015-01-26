@@ -1,0 +1,14 @@
+<div class="col-sm-3 col-md-2 sidebar">
+    <ul class="nav nav-sidebar">
+        <li><a href="/admin">Overview</a></li>
+        <li><a href="/admin/users">Users</a></li>
+        <li><a href="/admin/products">Products</a></li>
+        <li><a href="/admin/categories">Categories</a></li>
+    </ul>
+
+    <ul class="nav nav-sidebar">
+        <li><a id="adminUsers" href="#">Users</a></li>
+        <li><a id="adminCategories" href="#">Categories</a></li>
+        <li><a id="adminProducts" href="#">Products</a></li>
+    </ul>
+</div>

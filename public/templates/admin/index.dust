@@ -17,31 +17,16 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/admin">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
+            <li><a href="/admin">Admin Dashboard</a></li>
           </ul>
-          <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
-          </form>
         </div>
       </div>
     </nav>
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a id="adminUsers" href="#">Users</a></li>
-            <li><a id="adminCategories" href="#">Categories</a></li>
-            <li><a id="adminProducts" href="#">Products</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item</a></li>
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-          </ul>
-        </div>
+        {>"partials/admin-sidebar" /}
+
         <div id="main" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Dashboard</h1>
 
@@ -68,41 +53,16 @@
             </div>
           </div>
 
-          <h2 class="sub-header">Section title</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>elit</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+            <div>
+                <p>
+                    Dashboard for the admin.. In the next version there will be graphs about purchases etc..
+                </p>
+
+            </div>
+
         </div>
       </div>
     </div>
-
-
 {<body}
 
 {/body}

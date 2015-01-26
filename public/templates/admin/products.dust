@@ -6,7 +6,7 @@
 
 {<body}
 
-{>"partials/sidebar" /}
+{>"partials/admin-sidebar" /}
 
 <div id="main" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <div class="row">
@@ -89,11 +89,19 @@
         <tbody>
             {#.Products}
             <tr>
-                <td><a href="/admin/products/{.id}">{.title}</td>
+                <td><a href="/admin/products/{.id}">{.title}</a></td>
                 <td>{.description}</td>
                 <td>{.price}</td>
-                <td>Edit</td>
-                <td>Delete</td>
+                <td>
+                    <a class="btn btn-warning" href="/admin/products/{.id}">Edit</a>
+                </td>
+                <td>
+                    <form method="POST" action="/admin/products/{.id}">
+                        <input type="hidden" name="_csrf" value="{_csrf}">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input class="btn btn-danger" type="submit" value="DELETE">
+                    </form>
+                </td>
             </tr>
             {:else}
                 <h3>No products added yet:/</h3>

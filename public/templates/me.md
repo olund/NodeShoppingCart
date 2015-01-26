@@ -74,7 +74,11 @@ Eftersom min applikation ligger utanför det vi har lärt oss i kursen var det s
 
 
 ##K4 - NodeJS med CLI verktyg
-När man arbetar i NodeJS använder man terminalen väldigt mycket och för mig blir arbetsättet väldigt logiskt. För att kunna hantera projektet behöver man ha kunskap om följande verktyg:
+När man arbetar i NodeJS använder man terminalen väldigt mycket och för mig blir arbetsättet väldigt logiskt och det finns inget annat arbetsätt som är bättre. Allt sker på ett ögenblick och man får respons direkt.
+
+För att kunna hantera projektet behöver man ha kunskap om terminalen samt ett flertal verktyg. Detta kräver en högre insats av utvecklaren men man får väldigt mycket tillbaka bland annat högre kontroll och mer effektivitet.
+
+Inför projektet krävdes det att jag skulle lära mig följande verktyg för att verkligen kunna arbeta effektivt med node.js.
 * generator-kraken
 * grunt
 * npm
@@ -82,13 +86,15 @@ När man arbetar i NodeJS använder man terminalen väldigt mycket och för mig 
 * strongloop
 * bower
 
-Det som används mest i projeket är npm, nodemon och strong-cli. För att använda NPM behövs en `.package.json` fil där all konfiguration finns.NPM läser filen för att veta vad som skall göras och exempel på detta är `npm start`, `npm install` och `npm test`.
 
-Ett måste för att utveckla ett projekt är en debuger och jag valde att använda strongloop. För att slippa skriva `console.log` i varenda route behöver man bara skriva ett kommando i konsollen och det är `slc debug`. Man får då upp ett liknande verktyg som google chrome's där man kan sätta breakpoints se live output.
+Det som används mest i projeket är npm, nodemon och strong-cli. För att använda NPM behövs en `.package.json` fil där all konfiguration finns. NPM läser filen för att veta vad som skall göras och exempel på detta är `npm start`, `npm install` och `npm test`.
+
+Ett måste för att utveckla ett projekt är en debuger och jag valde att använda strongloop. För att slippa skriva `console.log` i varenda route behöver man bara skriva ett kommando i konsollen och det är `slc debug`. Man får då upp ett liknande verktyg som google chrome's där man kan sätta breakpoints samt se live output.
 
 
 ##K5 - Ramverk
-Varför ska man återskapa hjulet var min apporach. Eftersom vi har gått igenom alla grunder i kursmomenten kände jag för att använda mig av olika ramverk för att snabba upp utvecklingen. Att använda olika ramverk/bibliotek är både positivt och negativt eftersom det är mycket dokumentation som måste läsas men det snabbar upp utvecklingen i och med att det finns mycket kod att återanvända. En annan nackdel är att kvalitén kan skilja sig otroligt mycket och för att säkerhetställa att jag valde rätt kollade jag populariteten på paketen innan jag började använda dem.
+Varför ska man återskapa hjulet var min apporach. Eftersom vi har gått igenom alla grunder i kursmomenten var mitt mål att
+använda mig av olika ramverk för att snabba upp utvecklingen. Att använda olika ramverk/bibliotek är både positivt och negativt eftersom det är mycket dokumentation som måste läsas men det snabbar upp utvecklingen i och med att det finns mycket kod att återanvända. En annan nackdel är att kvalitén kan skilja sig otroligt mycket och för att säkerhetställa att jag valde rätt kollade jag populariteten på paketen innan jag började använda dem.
 
 Tyvärr gjorde jag ett stort misstag i början av projektet genom att använda jaydata (nämns tidigare), jag läste inte igenom hur det fungerade tillräckligt bra och såg inte att projektet var nerlagt. Inför nästa projekt kommer detta definitivt inte hände och nu förstår jag verkligen att man måste planera bättre.
 
@@ -133,21 +139,7 @@ När jag testar min kod använde jag Grunt som är ett byggsystem (nämns ovanf�
 Mocha är väldigt populärt bibliotek för att testa javascript kod och en utan kodkunskapar kan följa vad som händer eftersom det är väldigt beskrivande.
 
 ####Ett exempel på ett testfall ser ut såhär:
-
-```
-it('should say "Cart"', function (done) {
-    request(mock)
-        .get('/cart') // Hämtar addressen /cart
-        .expect(200) // Förväntar sig 200 statuskod
-        .expect('Content-Type', /html/) // Förväntar sig att det skall vara html
-        .expect(/cart/) // Förväntar sig att url'en skall vara /cart
-
-    .end(function (err, res) {
-        done(err);
-    });
-});
-
-```
+![sequelize](http://puu.sh/f31Pj/1bdd6653ce.png)
 
 
 ###JSHINT fel
@@ -173,5 +165,6 @@ Jag rekommederar denna kursen till programmerare utan förkunskaper om javascrip
 
 
 Jag ger kursen betyget 7/10.
+
 
 // Henrik Ölund
