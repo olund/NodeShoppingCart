@@ -31,7 +31,7 @@ module.exports = function (router) {
                 res.render('admin/products', {
                     title: 'Admin - Products',
                     categories: category,
-                    //messages: req.flash(),
+                    messages: req.flash(),
                 });
             }
 
@@ -146,7 +146,7 @@ module.exports = function (router) {
             if (req.xhr) {
                 res.send(JSON.stringify(users));
             } else {
-                res.render('admin/users', { users: users });
+                res.render('admin/users', { users: users, messages: req.flash() });
             }
         });
     });
@@ -229,7 +229,8 @@ module.exports = function (router) {
             }
         }).then(function (category) {
             res.render('admin/category', {
-                category: category
+                category: category,
+                messages: req.flash()
             });
         });
     });

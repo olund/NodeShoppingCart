@@ -1,7 +1,7 @@
 {>"layouts/master" /}
 
 {<title}
-admin
+Users
 {/title}
 
 {<body}
